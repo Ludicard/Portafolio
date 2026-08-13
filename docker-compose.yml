@@ -1,0 +1,12 @@
+services:
+  portfolio:
+    build: .
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    external: true
