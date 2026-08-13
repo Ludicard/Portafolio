@@ -75,7 +75,7 @@ const Hero = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:flex flex-col items-center z-10" aria-hidden="true">
         <Reveal delay={700} direction="none">
           <div className="flex flex-col items-center animate-bounce">
-            <span className="text-gray-500 text-xs uppercase tracking-widest mb-2">Scroll</span>
+            <span className="text-gray-500 text-[10px] sm:text-xs uppercase tracking-widest mb-2">Scroll Down</span>
             <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
