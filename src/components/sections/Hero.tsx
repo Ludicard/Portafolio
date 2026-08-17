@@ -1,4 +1,5 @@
 import Reveal from '../animations/Reveal';
+import profileImg from '../../assets/images/perfil.jpg';
 
 const Hero = () => {
   return (
@@ -15,7 +16,7 @@ const Hero = () => {
             <Reveal delay={0} direction="up">
               <div className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border border-wine/30 ring-4 ring-white/5 bg-[#0a0c10]">
                 <img 
-                  src="/profile.jpg" 
+                  src={profileImg} 
                   alt="Sergio - Software Engineer" 
                   className="w-full h-full object-cover"
                 />
