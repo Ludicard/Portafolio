@@ -10,11 +10,6 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem; /* 80px for the h-20 navbar */
-  scroll-snap-type: y mandatory;
-}
-
-section {
-  scroll-snap-align: start;
 }
 
 :root {
