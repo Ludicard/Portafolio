@@ -10,8 +10,8 @@ const Projects = () => {
       description: "A full-stack business management platform designed to help small and medium-sized companies manage their operations from a centralized system. EMA provides secure authentication, company and user management, client administration, invoice tracking, payment status management, and business dashboard metrics. The application was built with a modular architecture using React, TypeScript, NestJS, Prisma, and PostgreSQL, with the entire stack containerized using Docker Compose. The deployment is automated through GitHub Actions to a production VPS, with database migrations managed through Prisma and services isolated through Docker networks.",
       category: "Full Stack Application",
       technologies: ["React", "TypeScript", "NestJS", "Node.js", "PostgreSQL", "Prisma", "Docker", "GitHub Actions"],
-      link: "#",
-      repo: "#",
+      link: "https://ema.aurelianova.tech/dashboard",
+      repo: "",
       image: emaImg,
       colorClasses: {
         bg: "bg-[#0b101e]",
@@ -21,16 +21,17 @@ const Projects = () => {
     },
     {
       id: 2,
-      name: "Cloud Infrastructure Tool",
-      description: "Project description will be added here. This tool automated the deployment pipeline and infrastructure provisioning. It showcases system-level thinking and backend architecture capabilities in a production environment.",
-      category: "DevOps & Backend",
-      technologies: ["Go", "Docker", "AWS", "Terraform"],
-      link: "#",
-      repo: "#",
+      name: "FlowPlan — Intelligent Personal Planning System",
+      description: "A full-stack personal productivity platform designed to help users organize their time through intelligent management of tasks, goals, and calendar events. FlowPlan combines a traditional calendar with a planning engine capable of identifying available time blocks and generating prioritized activity recommendations based on pending tasks. The system also includes work session tracking and a weekly productivity scoring system to encourage consistent habits. The project was developed by refactoring an existing MVC application into a decoupled REST API architecture, applying SOLID principles and design patterns such as Repository and Strategy to improve maintainability, scalability, reusability, and separation of concerns. The backend was built with Node.js and Express, using Prisma ORM with PostgreSQL, while the mobile client was developed with React Native and Expo.",
+      category: "Full Stack Application",
+      technologies: ["React Native", "Expo", "Node.js", "Express", "PostgreSQL", "Prisma", "REST API", "SOLID", "Design Patterns"],
+      link: "",
+      repo: "https://github.com/Ludicard/FlowPlan",
+      image: "", // Placeholder for the flowplan image
       colorClasses: {
-        bg: "bg-[#091210]",
-        border: "border-emerald-900/30",
-        gradient: "from-emerald-900/10",
+        bg: "bg-[#0f0912]",
+        border: "border-purple-900/30",
+        gradient: "from-purple-900/10",
       }
     }
   ];
@@ -142,12 +143,16 @@ const Projects = () => {
                         </div>
 
                         <div className="flex gap-6">
-                          <a href={project.link} tabIndex={isActive ? 0 : -1} className="text-white hover:text-wine-light text-sm font-medium transition-colors underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-wine-light rounded">
-                            Live Demo &rarr;
-                          </a>
-                          <a href={project.repo} tabIndex={isActive ? 0 : -1} className="text-gray-400 hover:text-wine-light text-sm font-medium transition-colors underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-wine-light rounded">
-                            Source Code
-                          </a>
+                          {project.link && (
+                            <a href={project.link} target="_blank" rel="noopener noreferrer" tabIndex={isActive ? 0 : -1} className="text-white hover:text-wine-light text-sm font-medium transition-colors underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-wine-light rounded">
+                              Live Demo &rarr;
+                            </a>
+                          )}
+                          {project.repo && (
+                            <a href={project.repo} target="_blank" rel="noopener noreferrer" tabIndex={isActive ? 0 : -1} className="text-gray-400 hover:text-wine-light text-sm font-medium transition-colors underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-wine-light rounded">
+                              Source Code
+                            </a>
+                          )}
                         </div>
                       </div>
 
