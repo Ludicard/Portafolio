@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import Reveal from '../animations/Reveal';
+import emaImg from '../../assets/images/EMA.png';
 
 const Projects = () => {
   const projects = [
     {
       id: 1,
-      name: "Enterprise Management System",
-      description: "Project description will be added here. A comprehensive summary of the project's goals, the technical challenges faced, and the solutions implemented. This placeholder gives a sense of how a detailed project description will look within the layout.",
+      name: "Enterprise Management Assistant (EMA)",
+      description: "A full-stack business management platform designed to help small and medium-sized companies manage their operations from a centralized system. EMA provides secure authentication, company and user management, client administration, invoice tracking, payment status management, and business dashboard metrics. The application was built with a modular architecture using React, TypeScript, NestJS, Prisma, and PostgreSQL, with the entire stack containerized using Docker Compose. The deployment is automated through GitHub Actions to a production VPS, with database migrations managed through Prisma and services isolated through Docker networks.",
       category: "Full Stack Application",
-      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL"],
+      technologies: ["React", "TypeScript", "NestJS", "Node.js", "PostgreSQL", "Prisma", "Docker", "GitHub Actions"],
       link: "#",
       repo: "#",
+      image: emaImg,
       colorClasses: {
         bg: "bg-[#0b101e]",
         border: "border-blue-900/30",
@@ -109,8 +111,17 @@ const Projects = () => {
                       {/* Visual Placeholder */}
                       <div className="w-full lg:w-1/2">
                         <div className={`aspect-video rounded-xl flex items-center justify-center relative overflow-hidden group border border-white/5`}>
-                          <div className={`absolute inset-0 bg-gradient-to-tr ${project.colorClasses.gradient} to-transparent opacity-80`}></div>
-                          <span className="text-gray-500 font-mono text-sm relative z-10">Image Placeholder</span>
+                          {project.image ? (
+                            <>
+                              <div className={`absolute inset-0 bg-gradient-to-tr ${project.colorClasses.gradient} to-transparent opacity-40 z-10`}></div>
+                              <img src={project.image} alt={project.name} className="w-full h-full object-cover relative z-0 transition-transform duration-700 group-hover:scale-105" />
+                            </>
+                          ) : (
+                            <>
+                              <div className={`absolute inset-0 bg-gradient-to-tr ${project.colorClasses.gradient} to-transparent opacity-80`}></div>
+                              <span className="text-gray-500 font-mono text-sm relative z-10">Image Placeholder</span>
+                            </>
+                          )}
                         </div>
                       </div>
 
