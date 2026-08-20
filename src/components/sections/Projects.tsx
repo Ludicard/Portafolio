@@ -153,9 +153,20 @@ const Projects = () => {
                             />
                           </div>
                         ) : project.image ? (
-                          <div className="relative group rounded-xl overflow-hidden shadow-2xl">
-                            <div className={`absolute inset-0 bg-gradient-to-tr ${project.colorClasses.gradient} to-transparent opacity-20 z-10 pointer-events-none`}></div>
-                            <img src={project.image} alt={project.name} className="w-full h-auto object-cover relative z-0 transition-transform duration-1000 group-hover:scale-[1.02]" />
+                          <div className="relative group rounded-2xl overflow-hidden shadow-[0_0_40px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_-15px_rgba(255,255,255,0.1)] transition-all duration-700 hover:-translate-y-2 border border-white/10 bg-[#0a0c10]">
+                            {/* Browser Top Bar */}
+                            <div className="h-8 w-full flex items-center px-4 gap-2 border-b border-white/5 bg-gradient-to-r from-white/10 to-transparent relative z-20">
+                              <div className="w-2 h-2 rounded-full bg-red-500/80 shadow-[0_0_5px_rgba(239,68,68,0.5)]"></div>
+                              <div className="w-2 h-2 rounded-full bg-yellow-500/80 shadow-[0_0_5px_rgba(234,179,8,0.5)]"></div>
+                              <div className="w-2 h-2 rounded-full bg-green-500/80 shadow-[0_0_5px_rgba(34,197,94,0.5)]"></div>
+                              <div className="absolute left-1/2 transform -translate-x-1/2 w-1/3 max-w-[150px] h-3 bg-white/5 rounded-full hidden sm:block"></div>
+                            </div>
+                            
+                            {/* Image Content */}
+                            <div className="relative overflow-hidden">
+                              <div className={`absolute inset-0 bg-gradient-to-tr ${project.colorClasses.gradient} to-transparent opacity-30 z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-700`}></div>
+                              <img src={project.image} alt={project.name} className="w-full h-auto object-cover relative z-0 transition-transform duration-1000 group-hover:scale-[1.03]" />
+                            </div>
                           </div>
                         ) : (
                           <div className={`w-full aspect-video rounded-xl flex items-center justify-center bg-white/5 border border-white/10 relative overflow-hidden shadow-2xl`}>
