@@ -2,6 +2,9 @@ import { useState } from 'react';
 import Reveal from '../animations/Reveal';
 import emaImg from '../../assets/images/EMA.png';
 import naviImg from '../../assets/images/NAVI.png';
+import flow1Img from '../../assets/images/flow1.jpeg';
+import flow2Img from '../../assets/images/flow2.jpeg';
+import flow3Img from '../../assets/images/flow3.jpeg';
 
 const Projects = () => {
   const projects = [
@@ -29,6 +32,7 @@ const Projects = () => {
       link: "",
       repo: "https://github.com/Ludicard/FlowPlan",
       image: "", // Placeholder for the flowplan image
+      mobileImages: [flow1Img, flow2Img, flow3Img],
       colorClasses: {
         bg: "bg-[#0f0912]",
         border: "border-purple-900/30",
@@ -126,20 +130,39 @@ const Projects = () => {
                     <div className={`flex flex-col lg:flex-row gap-10 lg:gap-16 items-center p-6 lg:p-12 rounded-3xl border ${project.colorClasses.bg} ${project.colorClasses.border} shadow-2xl`}>
                       
                       {/* Visual */}
-                      <div className="w-full lg:w-7/12">
-                        <div className="relative group rounded-xl overflow-hidden shadow-2xl">
-                          {project.image ? (
-                            <>
-                              <div className={`absolute inset-0 bg-gradient-to-tr ${project.colorClasses.gradient} to-transparent opacity-20 z-10 pointer-events-none`}></div>
-                              <img src={project.image} alt={project.name} className="w-full h-auto object-cover relative z-0 transition-transform duration-1000 group-hover:scale-[1.02]" />
-                            </>
-                          ) : (
-                            <div className={`w-full aspect-video rounded-xl flex items-center justify-center bg-white/5 border border-white/10`}>
-                              <div className={`absolute inset-0 bg-gradient-to-tr ${project.colorClasses.gradient} to-transparent opacity-40`}></div>
-                              <span className="text-gray-500 font-mono text-sm relative z-10">Image Placeholder</span>
-                            </div>
-                          )}
-                        </div>
+                      <div className="w-full lg:w-7/12 flex justify-center items-center">
+                        {project.mobileImages ? (
+                          <div className="relative flex items-center justify-center w-full h-[400px] sm:h-[500px] lg:h-[550px]">
+                            {/* Left Mobile Image */}
+                            <img 
+                              src={project.mobileImages[0]} 
+                              alt={`${project.name} screen 1`} 
+                              className="absolute w-[35%] lg:w-[32%] h-auto object-cover rounded-xl sm:rounded-2xl shadow-xl -rotate-6 -translate-x-[45%] lg:-translate-x-[55%] opacity-70 hover:opacity-100 hover:scale-105 hover:z-20 hover:-rotate-2 transition-all duration-500 z-0 border border-white/10" 
+                            />
+                            {/* Center Mobile Image */}
+                            <img 
+                              src={project.mobileImages[1]} 
+                              alt={`${project.name} screen 2`} 
+                              className="absolute w-[45%] lg:w-[38%] h-auto object-cover rounded-xl sm:rounded-3xl shadow-2xl z-10 hover:scale-105 transition-all duration-500 border border-white/20" 
+                            />
+                            {/* Right Mobile Image */}
+                            <img 
+                              src={project.mobileImages[2]} 
+                              alt={`${project.name} screen 3`} 
+                              className="absolute w-[35%] lg:w-[32%] h-auto object-cover rounded-xl sm:rounded-2xl shadow-xl rotate-6 translate-x-[45%] lg:translate-x-[55%] opacity-70 hover:opacity-100 hover:scale-105 hover:z-20 hover:rotate-2 transition-all duration-500 z-0 border border-white/10" 
+                            />
+                          </div>
+                        ) : project.image ? (
+                          <div className="relative group rounded-xl overflow-hidden shadow-2xl">
+                            <div className={`absolute inset-0 bg-gradient-to-tr ${project.colorClasses.gradient} to-transparent opacity-20 z-10 pointer-events-none`}></div>
+                            <img src={project.image} alt={project.name} className="w-full h-auto object-cover relative z-0 transition-transform duration-1000 group-hover:scale-[1.02]" />
+                          </div>
+                        ) : (
+                          <div className={`w-full aspect-video rounded-xl flex items-center justify-center bg-white/5 border border-white/10 relative overflow-hidden shadow-2xl`}>
+                            <div className={`absolute inset-0 bg-gradient-to-tr ${project.colorClasses.gradient} to-transparent opacity-40`}></div>
+                            <span className="text-gray-500 font-mono text-sm relative z-10">Image Placeholder</span>
+                          </div>
+                        )}
                       </div>
 
                       {/* Content */}
