@@ -4,17 +4,15 @@ const Certifications = () => {
   const certifications = [
     {
       id: 1,
-      name: "Placeholder Certification Name",
-      institution: "Placeholder Issuing Authority",
-      date: "2024",
-      link: "#"
+      name: "Software Processes and Agile Practices",
+      institution: "University of Alberta",
+      link: "https://coursera.org/share/71b83bac04f3cb369b2be47e08963ef5"
     },
     {
       id: 2,
-      name: "Placeholder Certification Name",
-      institution: "Placeholder Issuing Authority",
-      date: "2023",
-      link: "#"
+      name: "Flutter and Dart: Developing iOS, Android, and Mobile Apps",
+      institution: "IBM",
+      link: "https://coursera.org/share/57992a20e68ca9caec4be7f5dbee549f"
     }
   ];
 
@@ -35,7 +33,7 @@ const Certifications = () => {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between p-6 border border-white/5 rounded-lg bg-white/[0.01] hover:bg-white/[0.02] transition-colors group">
                 <div className="mb-4 sm:mb-0">
                   <h3 className="text-lg font-bold text-white group-hover:text-gray-200 transition-colors">{cert.name}</h3>
-                  <p className="text-gray-400 text-sm">{cert.institution} &bull; {cert.date}</p>
+                  <p className="text-wine-light font-medium tracking-wide text-sm mt-1">{cert.institution}</p>
                 </div>
                 <a 
                   href={cert.link}
