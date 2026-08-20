@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Reveal from '../animations/Reveal';
 import emaImg from '../../assets/images/EMA.png';
+import naviImg from '../../assets/images/NAVI.png';
 
 const Projects = () => {
   const projects = [
@@ -32,6 +33,21 @@ const Projects = () => {
         bg: "bg-[#0f0912]",
         border: "border-purple-900/30",
         gradient: "from-purple-900/10",
+      }
+    },
+    {
+      id: 3,
+      name: "NAV-I",
+      description: "A full-stack website monitoring and automated diagnosis platform designed to track the health, performance, and security of web applications. NAV-I provides automated scheduled scans, Lighthouse performance metrics, SSL certificate tracking, and AI-powered diagnoses using the Anthropic API. The platform features an interactive dashboard for managing alerts, tasks, and historical events across multiple websites. It was built with a modern architecture using React, TypeScript, Express, Prisma, and PostgreSQL, with background tasks managed via Node-Cron. The entire stack is containerized using Docker Compose for seamless deployment and isolated environments, while database migrations and data modeling are handled through Prisma.",
+      category: "Full Stack Application",
+      technologies: ["React", "TypeScript", "Express", "Node.js", "PostgreSQL", "Prisma", "Docker", "Tailwind CSS"],
+      link: "",
+      repo: "",
+      image: naviImg,
+      colorClasses: {
+        bg: "bg-[#091210]",
+        border: "border-emerald-900/30",
+        gradient: "from-emerald-900/10",
       }
     }
   ];
