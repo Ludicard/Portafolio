@@ -127,11 +127,11 @@ const Projects = () => {
                       
                       {/* Visual Placeholder */}
                       <div className="w-full lg:w-1/2">
-                        <div className={`aspect-video rounded-xl flex items-center justify-center relative overflow-hidden group border border-white/5`}>
+                        <div className={`aspect-video rounded-xl flex items-center justify-center relative overflow-hidden group border border-white/5 bg-black/40`}>
                           {project.image ? (
                             <>
                               <div className={`absolute inset-0 bg-gradient-to-tr ${project.colorClasses.gradient} to-transparent opacity-40 z-10`}></div>
-                              <img src={project.image} alt={project.name} className="w-full h-full object-cover relative z-0 transition-transform duration-700 group-hover:scale-105" />
+                              <img src={project.image} alt={project.name} className="w-full h-full object-contain p-2 relative z-0 transition-transform duration-700 group-hover:scale-105" />
                             </>
                           ) : (
                             <>
