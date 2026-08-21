@@ -9,7 +9,7 @@ export const translations = {
       contact: "Contact"
     },
     hero: {
-      subtitle: "SOFTWARE ENGINEER · FULL STACK DEVELOPER",
+      subtitle: "SOFTWARE ENGINEERING STUDENT · FULL STACK DEVELOPER",
       greeting: "Hi, I'm ",
       name: "Sergio",
       tagline: "Building software, systems, and ideas into real products.",
@@ -184,7 +184,7 @@ export const translations = {
       contact: "Contacto"
     },
     hero: {
-      subtitle: "INGENIERO DE SOFTWARE · DESARROLLADOR FULL STACK",
+      subtitle: "ESTUDIANTE DE INGENIERÍA DE SOFTWARE · DESARROLLADOR FULL STACK",
       greeting: "Hola, soy ",
       name: "Sergio",
       tagline: "Construyendo software, sistemas e ideas en productos reales.",
