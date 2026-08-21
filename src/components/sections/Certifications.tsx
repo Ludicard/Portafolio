@@ -1,17 +1,16 @@
 import Reveal from '../animations/Reveal';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Certifications = () => {
+  const { t } = useLanguage();
+  
   const certifications = [
     {
-      id: 1,
-      name: "Software Processes and Agile Practices",
-      institution: "University of Alberta",
+      ...t.certifications.items[0],
       link: "https://coursera.org/share/71b83bac04f3cb369b2be47e08963ef5"
     },
     {
-      id: 2,
-      name: "Flutter and Dart: Developing iOS, Android, and Mobile Apps",
-      institution: "IBM",
+      ...t.certifications.items[1],
       link: "https://coursera.org/share/57992a20e68ca9caec4be7f5dbee549f"
     }
   ];
@@ -22,8 +21,8 @@ const Certifications = () => {
         
         <div className="mb-12">
           <Reveal delay={0}>
-            <h2 id="certifications-heading" className="text-3xl font-bold text-white tracking-tight mb-2">Certifications</h2>
-            <p className="text-gray-500 font-medium tracking-wide text-sm uppercase">Professional Credentials</p>
+            <h2 id="certifications-heading" className="text-3xl font-bold text-white tracking-tight mb-2">{t.certifications.sectionTitle}</h2>
+            <p className="text-gray-500 font-medium tracking-wide text-sm uppercase">{t.certifications.sectionSubtitle}</p>
           </Reveal>
         </div>
 
@@ -41,7 +40,7 @@ const Certifications = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Verify Credential
+                  {t.certifications.verify}
                   <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>

@@ -1,18 +1,20 @@
 import Reveal from '../animations/Reveal';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
   return (
     <section id="contact" className="min-h-[100svh] flex flex-col justify-center py-32 border-t border-white/5 relative overflow-hidden" aria-labelledby="contact-heading">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050608]"></div>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center w-full">
         
         <Reveal delay={0}>
-          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">Let's work together.</h2>
+          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">{t.contact.title}</h2>
         </Reveal>
         
         <Reveal delay={100}>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-12">
-            Currently open for new opportunities. Whether you have a question or just want to say hi, feel free to reach out.
+            {t.contact.subtitle}
           </p>
         </Reveal>
 

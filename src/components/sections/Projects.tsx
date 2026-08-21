@@ -5,18 +5,18 @@ import naviImg from '../../assets/images/NAVI.png';
 import flow1Img from '../../assets/images/flow1.jpeg';
 import flow2Img from '../../assets/images/flow2.jpeg';
 import flow3Img from '../../assets/images/flow3.jpeg';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Projects = () => {
+  const { t } = useLanguage();
   const projects = [
     {
-      id: 1,
-      name: "Enterprise Management Assistant (EMA)",
-      description: "A full-stack business management platform designed to help small and medium-sized companies manage their operations from a centralized system. EMA provides secure authentication, company and user management, client administration, invoice tracking, payment status management, and business dashboard metrics. The application was built with a modular architecture using React, TypeScript, NestJS, Prisma, and PostgreSQL, with the entire stack containerized using Docker Compose. The deployment is automated through GitHub Actions to a production VPS, with database migrations managed through Prisma and services isolated through Docker networks.",
-      category: "Full Stack Application",
+      ...t.projects.items[0],
       technologies: ["React", "TypeScript", "NestJS", "Node.js", "PostgreSQL", "Prisma", "Docker", "GitHub Actions"],
       link: "https://ema.aurelianova.tech/dashboard",
       repo: "",
       image: emaImg,
+      mobileImages: undefined,
       colorClasses: {
         bg: "bg-[#0b101e]",
         border: "border-blue-900/30",
@@ -24,10 +24,7 @@ const Projects = () => {
       }
     },
     {
-      id: 2,
-      name: "FlowPlan — Intelligent Personal Planning System",
-      description: "A full-stack personal productivity platform designed to help users organize their time through intelligent management of tasks, goals, and calendar events. FlowPlan combines a traditional calendar with a planning engine capable of identifying available time blocks and generating prioritized activity recommendations based on pending tasks. The system also includes work session tracking and a weekly productivity scoring system to encourage consistent habits. The project was developed by refactoring an existing MVC application into a decoupled REST API architecture, applying SOLID principles and design patterns such as Repository and Strategy to improve maintainability, scalability, reusability, and separation of concerns. The backend was built with Node.js and Express, using Prisma ORM with PostgreSQL, while the mobile client was developed with React Native and Expo.",
-      category: "Full Stack Application",
+      ...t.projects.items[1],
       technologies: ["React Native", "Expo", "Node.js", "Express", "PostgreSQL", "Prisma", "REST API", "SOLID", "Design Patterns"],
       link: "",
       repo: "https://github.com/Ludicard/FlowPlan",
@@ -40,14 +37,12 @@ const Projects = () => {
       }
     },
     {
-      id: 3,
-      name: "NAV-I",
-      description: "A full-stack website monitoring and automated diagnosis platform designed to track the health, performance, and security of web applications. NAV-I provides automated scheduled scans, Lighthouse performance metrics, SSL certificate tracking, and AI-powered diagnoses using the Anthropic API. The platform features an interactive dashboard for managing alerts, tasks, and historical events across multiple websites. It was built with a modern architecture using React, TypeScript, Express, Prisma, and PostgreSQL, with background tasks managed via Node-Cron. The entire stack is containerized using Docker Compose for seamless deployment and isolated environments, while database migrations and data modeling are handled through Prisma.",
-      category: "Full Stack Application",
+      ...t.projects.items[2],
       technologies: ["React", "TypeScript", "Express", "Node.js", "PostgreSQL", "Prisma", "Docker", "Tailwind CSS"],
       link: "",
       repo: "",
       image: naviImg,
+      mobileImages: undefined,
       colorClasses: {
         bg: "bg-[#091210]",
         border: "border-emerald-900/30",
@@ -103,8 +98,8 @@ const Projects = () => {
         
         <div className="mb-12">
           <Reveal delay={0}>
-            <h2 id="projects-heading" className="text-3xl font-bold text-white tracking-tight mb-2">Featured Projects</h2>
-            <p className="text-gray-500 font-medium tracking-wide text-sm uppercase">Selected Work</p>
+            <h2 id="projects-heading" className="text-3xl font-bold text-white tracking-tight mb-2">{t.projects.sectionTitle}</h2>
+            <p className="text-gray-500 font-medium tracking-wide text-sm uppercase">{t.projects.sectionSubtitle}</p>
           </Reveal>
         </div>
 
@@ -171,7 +166,7 @@ const Projects = () => {
                         ) : (
                           <div className={`w-full aspect-video rounded-xl flex items-center justify-center bg-white/5 border border-white/10 relative overflow-hidden shadow-2xl`}>
                             <div className={`absolute inset-0 bg-gradient-to-tr ${project.colorClasses.gradient} to-transparent opacity-40`}></div>
-                            <span className="text-gray-500 font-mono text-sm relative z-10">Image Placeholder</span>
+                            <span className="text-gray-500 font-mono text-sm relative z-10">{t.projects.imagePlaceholder}</span>
                           </div>
                         )}
                       </div>
@@ -195,7 +190,7 @@ const Projects = () => {
                         <div className="flex gap-6 items-center">
                           {project.link && (
                             <a href={project.link} target="_blank" rel="noopener noreferrer" tabIndex={isActive ? 0 : -1} className="inline-flex items-center text-white bg-wine hover:bg-wine-light px-5 py-2.5 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-wine-light shadow-lg">
-                              Live Demo 
+                              {t.projects.liveDemo}
                               <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                               </svg>
@@ -206,7 +201,7 @@ const Projects = () => {
                               <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                 <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
                               </svg>
-                              Source Code
+                              {t.projects.sourceCode}
                             </a>
                           )}
                         </div>

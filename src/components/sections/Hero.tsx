@@ -1,7 +1,12 @@
 import Reveal from '../animations/Reveal';
 import profileImg from '../../assets/images/perfil.jpg';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Hero = () => {
+  const { t, language } = useLanguage();
+  
+  // Choose the CV file based on current language
+  const cvFile = language === 'es' ? '/cv-es.pdf' : '/cv-en.pdf';
   return (
     <section 
       id="hero"
@@ -29,25 +34,25 @@ const Hero = () => {
             <Reveal delay={100}>
               <p className="text-wine-light font-medium tracking-wide text-sm uppercase mb-6 flex items-center">
                 <span className="w-8 h-[1px] bg-wine-light mr-4" aria-hidden="true"></span>
-                SOFTWARE ENGINEER · FULL STACK DEVELOPER
+                {t.hero.subtitle}
               </p>
             </Reveal>
             
             <Reveal delay={200}>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-4">
-                Hi, I'm <span className="text-wine-light">Sergio</span>.
+                {t.hero.greeting}<span className="text-wine-light">{t.hero.name}</span>.
               </h1>
             </Reveal>
             
             <Reveal delay={300}>
               <h2 className="text-2xl sm:text-3xl font-medium text-gray-300 mb-6 leading-snug">
-                Building software, systems, and ideas into real products.
+                {t.hero.tagline}
               </h2>
             </Reveal>
             
             <Reveal delay={400}>
               <p className="text-lg text-gray-400 leading-relaxed mb-10 max-w-2xl">
-                I'm an 8th semester Software Engineering student and Full Stack Developer focused on building reliable software, exploring system architecture, and turning ideas into products that can grow.
+                {t.hero.description}
               </p>
             </Reveal>
             
@@ -57,13 +62,24 @@ const Hero = () => {
                   href="#projects"
                   className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-wine hover:bg-wine-light transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background focus:ring-wine-light"
                 >
-                  View Projects
+                  {t.hero.viewProjects}
                 </a>
                 <a 
                   href="#contact"
                   className="inline-flex justify-center items-center px-6 py-3 border border-gray-600 text-base font-medium rounded-md text-white bg-transparent hover:border-wine hover:text-wine-light transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background focus:ring-wine-light"
                 >
-                  Get in Touch
+                  {t.hero.getInTouch}
+                </a>
+                <a 
+                  href={cvFile}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex justify-center items-center px-6 py-3 border border-wine/50 text-base font-medium rounded-md text-wine-light bg-wine/5 hover:bg-wine/10 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background focus:ring-wine-light shadow-lg"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  {t.hero.downloadCv}
                 </a>
               </div>
             </Reveal>
@@ -76,7 +92,7 @@ const Hero = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:flex flex-col items-center z-10" aria-hidden="true">
         <Reveal delay={700} direction="none">
           <div className="flex flex-col items-center animate-bounce">
-            <span className="text-gray-500 text-[10px] sm:text-xs uppercase tracking-widest mb-2">Scroll Down</span>
+            <span className="text-gray-500 text-[10px] sm:text-xs uppercase tracking-widest mb-2">{t.hero.scrollDown}</span>
             <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>

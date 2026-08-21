@@ -1,25 +1,43 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
+  const langRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(event.target as Node)) {
+        setIsLangOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Contact', href: '#contact' },
+    { name: t.nav.about, href: '#about' },
+    { name: t.nav.projects, href: '#projects' },
+    { name: t.nav.experience, href: '#experience' },
+    { name: t.nav.contact, href: '#contact' },
   ];
 
   return (
     <header className="fixed top-0 w-full z-50 bg-[#0f1115]/90 backdrop-blur-md border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-center md:justify-end h-20 w-full">
+        <div className="flex items-center justify-between h-20 w-full relative">
+          
+          {/* Spacer for desktop symmetry */}
+          <div className="hidden md:block w-1/4"></div>
+
           {/* Desktop Menu */}
-          <nav className="hidden md:block w-full" aria-label="Desktop navigation">
+          <nav className="hidden md:flex justify-center flex-1" aria-label="Desktop navigation">
             <ul className="flex justify-center space-x-8">
               {navLinks.map((link) => (
                 <li key={link.name}>
@@ -34,27 +52,63 @@ const Navbar = () => {
             </ul>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={toggleMenu}
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-wine-light hover:bg-wine/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-wine transition-colors"
-              aria-controls="mobile-menu"
-              aria-expanded={isOpen}
-              aria-label="Toggle navigation menu"
-            >
-              <span className="sr-only">{isOpen ? 'Close menu' : 'Open menu'}</span>
-              {isOpen ? (
-                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
+          {/* Right Controls */}
+          <div className="flex items-center justify-end w-full md:w-1/4 gap-4">
+            
+            {/* Language Switcher */}
+            <div className="relative" ref={langRef}>
+              <button
+                onClick={() => setIsLangOpen(!isLangOpen)}
+                className="flex items-center gap-2 p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-wine"
+                aria-label="Toggle language menu"
+              >
+                <span className="text-xl leading-none">{language === 'en' ? '🇺🇸' : '🇪🇸'}</span>
+              </button>
+              
+              {isLangOpen && (
+                <div className="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-[#1a1f2e] ring-1 ring-black ring-opacity-5 border border-white/10 overflow-hidden z-50">
+                  <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                    <button
+                      onClick={() => { setLanguage('en'); setIsLangOpen(false); }}
+                      className={`block w-full text-left px-4 py-2 text-sm ${language === 'en' ? 'bg-wine/20 text-wine-light' : 'text-gray-300 hover:bg-white/5'} transition-colors`}
+                      role="menuitem"
+                    >
+                      🇺🇸 English
+                    </button>
+                    <button
+                      onClick={() => { setLanguage('es'); setIsLangOpen(false); }}
+                      className={`block w-full text-left px-4 py-2 text-sm ${language === 'es' ? 'bg-wine/20 text-wine-light' : 'text-gray-300 hover:bg-white/5'} transition-colors`}
+                      role="menuitem"
+                    >
+                      🇪🇸 Español
+                    </button>
+                  </div>
+                </div>
               )}
-            </button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button
+                onClick={toggleMenu}
+                type="button"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-wine-light hover:bg-wine/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-wine transition-colors"
+                aria-controls="mobile-menu"
+                aria-expanded={isOpen}
+                aria-label="Toggle navigation menu"
+              >
+                <span className="sr-only">{isOpen ? 'Close menu' : 'Open menu'}</span>
+                {isOpen ? (
+                  <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>
