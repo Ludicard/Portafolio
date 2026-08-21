@@ -47,7 +47,7 @@ const Hero = () => {
             
             <Reveal delay={400}>
               <p className="text-lg text-gray-400 leading-relaxed mb-10 max-w-2xl">
-                I'm a Software Engineering student and Full Stack Developer focused on building reliable software, exploring system architecture, and turning ideas into products that can grow.
+                I'm an 8th semester Software Engineering student and Full Stack Developer focused on building reliable software, exploring system architecture, and turning ideas into products that can grow.
               </p>
             </Reveal>
             

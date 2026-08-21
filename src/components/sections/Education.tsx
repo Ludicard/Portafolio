@@ -12,36 +12,34 @@ const Education = () => {
           </Reveal>
         </div>
 
-        <div className="relative pl-6 sm:pl-8 border-l border-white/10 ml-3 sm:ml-4 pb-4">
-          
-          {/* Subtle timeline-like marker */}
-          <div className="absolute -left-[4.5px] top-2.5 z-10" aria-hidden="true">
-            <Reveal delay={100} direction="none">
-              <div className="w-2 h-2 rounded-full bg-wine-light ring-4 ring-[#08090b]"></div>
-            </Reveal>
-          </div>
-
+        <div className="max-w-4xl mx-auto">
           <Reveal delay={200}>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">Software Engineering</h3>
-          </Reveal>
-          
-          <Reveal delay={300}>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-6">
-              <span className="text-lg text-gray-300 font-medium">Universidad de Las Américas (UDLA)</span>
-              <span className="hidden sm:block text-white/20" aria-hidden="true">•</span>
-              <span className="text-sm text-gray-500">Quito, Ecuador</span>
+            <div className="group relative p-8 sm:p-12 border border-white/10 rounded-3xl bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 shadow-2xl hover:shadow-wine/5 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-wine/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+              
+              <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+                <div>
+                  <div className="flex flex-wrap items-center gap-3 mb-4">
+                    <span className="px-3 py-1 bg-wine/20 text-wine-light text-xs font-bold uppercase tracking-wider rounded-md border border-wine/30">In Progress</span>
+                    <span className="px-3 py-1 bg-white/5 text-gray-300 text-xs font-medium uppercase tracking-wider rounded-md border border-white/10">8th Semester</span>
+                  </div>
+                  <h3 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-3">Software Engineering</h3>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                    <span className="text-lg font-medium text-gray-200">Universidad de Las Américas (UDLA)</span>
+                    <span className="hidden sm:block text-white/20" aria-hidden="true">•</span>
+                    <span className="text-gray-500">Quito, Ecuador</span>
+                  </div>
+                </div>
+                
+                <div className="flex flex-col items-start md:items-end justify-center border-t border-white/10 pt-6 md:border-none md:pt-0 mt-2 md:mt-0">
+                  <div className="text-left md:text-right">
+                    <span className="block text-4xl sm:text-5xl font-light text-white/20 mb-1">2027</span>
+                    <span className="block text-xs uppercase tracking-widest text-gray-500 font-medium">Expected Graduation</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </Reveal>
-
-          <Reveal delay={400}>
-            <div className="flex items-center gap-4">
-              <span className="text-sm font-mono text-gray-400 tracking-wide">2023 — 2027</span>
-              <Reveal delay={500} direction="none">
-                <span className="px-3 py-1 bg-wine/10 border border-wine/20 rounded-md text-xs font-semibold text-wine-light tracking-wide uppercase">In Progress</span>
-              </Reveal>
-            </div>
-          </Reveal>
-
         </div>
 
       </div>
