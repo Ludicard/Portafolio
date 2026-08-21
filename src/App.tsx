@@ -13,7 +13,7 @@ import { LanguageProvider } from './context/LanguageContext';
 function App() {
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-[#0a0c10] text-gray-200 selection:bg-gray-700 selection:text-white font-sans">
+      <div className="min-h-screen bg-[#040814] text-gray-200 selection:bg-gray-700 selection:text-white font-sans">
         <Navbar />
         <main>
           <Hero />

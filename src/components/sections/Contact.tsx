@@ -5,7 +5,7 @@ const Contact = () => {
   const { t } = useLanguage();
   return (
     <section id="contact" className="min-h-[100svh] flex flex-col justify-center py-32 border-t border-white/5 relative overflow-hidden" aria-labelledby="contact-heading">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#050608]"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#040814]"></div>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center w-full">
         
         <Reveal delay={0}>

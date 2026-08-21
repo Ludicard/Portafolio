@@ -143,7 +143,7 @@ const Skills = () => {
   }));
 
   return (
-    <section id="skills" className="min-h-[100svh] flex flex-col justify-center py-24 border-t border-white/5 bg-[#08090b]" aria-labelledby="skills-heading">
+    <section id="skills" className="min-h-[100svh] flex flex-col justify-center py-24 border-t border-white/5 bg-[#070b1a]" aria-labelledby="skills-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
         
         <div className="mb-16">
