@@ -32,6 +32,17 @@ const Contact = () => {
             >
               luckydicey38@gmail.com
             </a>
+            <a 
+              href="https://wa.me/593963083283"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex justify-center items-center px-8 py-4 border border-[#25D366]/30 text-base font-medium rounded-md text-[#25D366] bg-[#25D366]/5 hover:bg-[#25D366]/10 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background focus:ring-[#25D366] w-full sm:w-auto hover:scale-105 transform duration-200 shadow-lg"
+            >
+              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 1.76.452 3.42 1.258 4.862L2 22l5.32-1.353c1.4.743 2.99 1.155 4.68 1.155 5.523 0 10-4.484 10-10.017C22 6.484 17.522 2 12 2zm5.064 14.507c-.206.582-1.189 1.118-1.636 1.15-.39.028-.888.06-2.545-.589-2.032-.796-3.34-2.855-3.443-2.992-.103-.137-.822-1.096-.822-2.093 0-.996.518-1.488.704-1.683.186-.196.402-.244.536-.244.135 0 .27.001.385.007.121.006.284-.047.44.331.161.393.551 1.348.6 1.446.049.098.082.213.016.345-.065.132-.103.214-.207.336-.103.123-.217.265-.308.358-.103.102-.213.214-.097.414.116.2.518.855 1.107 1.383.759.68 1.4 1.1 1.6 1.218.2.119.317.098.437-.039.12-.138.518-.6.657-.808.139-.208.277-.174.463-.104.186.069 1.176.554 1.378.653.201.099.336.148.385.231.049.083.049.48-.157 1.062z" clipRule="evenodd" />
+              </svg>
+              +593 96 308 3283
+            </a>
           </div>
         </Reveal>
 
