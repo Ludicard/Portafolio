@@ -1,12 +1,14 @@
 import Reveal from '../animations/Reveal';
 import profileImg from '../../assets/images/perfil.jpg';
+import cvEs from '../../assets/docs/CV 6.1 Español.pdf';
+import cvEn from '../../assets/docs/CV 6.1 Ingles.pdf';
 import { useLanguage } from '../../context/LanguageContext';
 
 const Hero = () => {
   const { t, language } = useLanguage();
   
   // Choose the CV file based on current language
-  const cvFile = language === 'es' ? '/cv-es.pdf' : '/cv-en.pdf';
+  const cvFile = language === 'es' ? cvEs : cvEn;
   return (
     <section 
       id="hero"

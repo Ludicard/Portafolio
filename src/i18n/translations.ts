@@ -19,6 +19,101 @@ export const translations = {
       downloadCv: "Download CV",
       scrollDown: "Scroll Down"
     },
+    about: {
+      sectionTitle: "About",
+      sectionSubtitle: "Background & Approach",
+      p1: "I'm a Software Engineering student and Full Stack Developer with a strong interest in building software that is useful, maintainable, and built to last. Alongside my studies, I build projects that allow me to explore ideas beyond the classroom and turn what I learn into practical systems.",
+      p2: "I'm particularly interested in software architecture, backend development, cloud infrastructure, and the process of turning an idea into a working product. I enjoy understanding how things work under the hood and continuously improving the way I build, deploy, and maintain software. What motivates me most is taking something from an idea on paper to a real system that people can actually use.",
+      corePhilosophy: "Core Philosophy",
+      beUseful: "Be useful.",
+      philosophyText: "I believe the most rewarding work is work that solves a real problem. I don't want to build software just for the sake of building it; I want the things I create to have a purpose, make someone's work easier, or turn a difficult problem into a simpler one. For me, the value of an engineer comes from the problems they can solve and the impact their work creates."
+    },
+    skills: {
+      sectionTitle: "Technical Arsenal",
+      sectionSubtitle: "Technologies & Tools",
+      categories: [
+        { name: "Frontend" },
+        { name: "Mobile" },
+        { name: "Backend" },
+        { name: "Databases" },
+        { name: "Artificial Intelligence" },
+        { name: "DevOps & Infrastructure" },
+        { name: "Tools & Development" },
+        { name: "Testing & Performance" }
+      ]
+    },
+    experience: {
+      sectionTitle: "Experience",
+      sectionSubtitle: "Where I've worked and what I've built",
+      present: "Present",
+      items: [
+        {
+          id: 1,
+          period: "October 2025 — Present",
+          introduction: "Working across full-stack development to build business applications, automate internal processes, and integrate modern technologies into real-world products.",
+          projects: [
+            {
+              title: "E-commerce & Electronic Invoicing",
+              context: "Developed a full-stack e-commerce and electronic invoicing platform designed to support the company's online sales and billing workflows. The system integrates sales operations and electronic invoicing in compliance with Ecuador's SRI requirements.",
+              description: undefined,
+              details: [
+                "Designed and implemented the backend architecture using Node.js and Express.",
+                "Developed the frontend using React.",
+                "Built more than 20 REST API endpoints connecting the application with the database and business logic.",
+                "Integrated electronic invoicing workflows according to SRI requirements.",
+                "Designed and managed the MySQL data layer.",
+                "Configured automated deployment through GitHub Actions and cPanel."
+              ]
+            },
+            {
+              title: "AI-Powered Educational Platform",
+              context: "Designed and developed an educational platform that uses generative AI to transform academic documents into structured learning content.",
+              description: undefined,
+              details: [
+                "Designed a workflow for processing academic program PDFs.",
+                "Integrated Google Gemini to generate structured courses, subjects, modules and assessments.",
+                "Built the application logic responsible for transforming generated content into usable educational structures.",
+                "Integrated HeyGen to provide a real-time video-avatar assistant.",
+                "Implemented AI-assisted quiz evaluation and automated grading.",
+                "Connected multiple external AI services into a unified application workflow."
+              ]
+            }
+          ]
+        },
+        {
+          id: 2,
+          period: "2024 — 2025",
+          introduction: "Developed internal software and automation solutions focused on improving administrative workflows, data management, reporting and maintenance operations.",
+          projects: [
+            {
+              title: "Maintenance & Billing Management System",
+              context: "Designed and developed an internal management system to centralize customer information, equipment records, maintenance activities and billing operations.",
+              description: undefined,
+              details: [
+                "Developed modules for customer and equipment management.",
+                "Implemented maintenance scheduling and tracking for service activities.",
+                "Built invoice and billing management functionality.",
+                "Created dashboards for monitoring financial and operational information.",
+                "Centralized administrative data that was previously handled across different workflows.",
+                "Implemented a calendar to organize upcoming maintenance activities."
+              ]
+            },
+            {
+              title: "Excel Administrative Automation",
+              context: undefined,
+              description: "Automated repetitive administrative data-entry workflows using Excel VBA macros, reducing manual work and minimizing data-entry errors.",
+              details: []
+            },
+            {
+              title: "Corporate Website",
+              context: undefined,
+              description: "Designed and developed the company's institutional website using WordPress, providing a public-facing platform for corporate information and customer contact.",
+              details: []
+            }
+          ]
+        }
+      ]
+    },
     projects: {
       sectionTitle: "Featured Projects",
       sectionSubtitle: "Selected Work",
@@ -98,6 +193,101 @@ export const translations = {
       getInTouch: "Contactar",
       downloadCv: "Descargar CV",
       scrollDown: "Bajar"
+    },
+    about: {
+      sectionTitle: "Sobre mí",
+      sectionSubtitle: "Contexto y Enfoque",
+      p1: "Soy estudiante de Ingeniería de Software y Desarrollador Full Stack con un fuerte interés en construir software útil, mantenible y hecho para durar. Junto con mis estudios, construyo proyectos que me permiten explorar ideas más allá de las aulas y convertir lo que aprendo en sistemas prácticos.",
+      p2: "Me interesa particularmente la arquitectura de software, el desarrollo backend, la infraestructura en la nube y el proceso de convertir una idea en un producto funcional. Disfruto entendiendo cómo funcionan las cosas por debajo y mejorando continuamente la forma en que construyo, despliego y mantengo software. Lo que más me motiva es llevar algo de una idea en papel a un sistema real que la gente pueda usar.",
+      corePhilosophy: "Filosofía Principal",
+      beUseful: "Ser útil.",
+      philosophyText: "Creo que el trabajo más gratificante es aquel que resuelve un problema real. No quiero construir software solo por construirlo; quiero que las cosas que creo tengan un propósito, faciliten el trabajo de alguien o conviertan un problema difícil en uno más simple. Para mí, el valor de un ingeniero proviene de los problemas que puede resolver y del impacto que su trabajo genera."
+    },
+    skills: {
+      sectionTitle: "Arsenal Técnico",
+      sectionSubtitle: "Tecnologías y Herramientas",
+      categories: [
+        { name: "Frontend" },
+        { name: "Móvil" },
+        { name: "Backend" },
+        { name: "Bases de Datos" },
+        { name: "Inteligencia Artificial" },
+        { name: "DevOps e Infraestructura" },
+        { name: "Herramientas y Desarrollo" },
+        { name: "Testing y Rendimiento" }
+      ]
+    },
+    experience: {
+      sectionTitle: "Experiencia",
+      sectionSubtitle: "Dónde he trabajado y qué he construido",
+      present: "Presente",
+      items: [
+        {
+          id: 1,
+          period: "Octubre 2025 — Presente",
+          introduction: "Trabajando en desarrollo full-stack para construir aplicaciones empresariales, automatizar procesos internos e integrar tecnologías modernas en productos del mundo real.",
+          projects: [
+            {
+              title: "E-commerce y Facturación Electrónica",
+              context: "Desarrollé una plataforma full-stack de comercio electrónico y facturación diseñada para respaldar las ventas en línea y los flujos de facturación de la empresa. El sistema integra operaciones de ventas y facturación electrónica en cumplimiento con los requisitos del SRI de Ecuador.",
+              description: undefined,
+              details: [
+                "Diseñé e implementé la arquitectura backend usando Node.js y Express.",
+                "Desarrollé el frontend usando React.",
+                "Construí más de 20 endpoints de API REST que conectan la aplicación con la base de datos y la lógica de negocio.",
+                "Integré flujos de facturación electrónica según los requisitos del SRI.",
+                "Diseñé y administré la capa de datos en MySQL.",
+                "Configuré el despliegue automático mediante GitHub Actions y cPanel."
+              ]
+            },
+            {
+              title: "Plataforma Educativa con Inteligencia Artificial",
+              context: "Diseñé y desarrollé una plataforma educativa que utiliza IA generativa para transformar documentos académicos en contenido de aprendizaje estructurado.",
+              description: undefined,
+              details: [
+                "Diseñé un flujo de trabajo para procesar PDFs de programas académicos.",
+                "Integré Google Gemini para generar cursos, materias, módulos y evaluaciones estructuradas.",
+                "Construí la lógica de la aplicación responsable de transformar el contenido generado en estructuras educativas utilizables.",
+                "Integré HeyGen para proporcionar un asistente de video avatar en tiempo real.",
+                "Implementé la evaluación de cuestionarios asistida por IA y calificación automática.",
+                "Conecté múltiples servicios externos de IA en un flujo de aplicación unificado."
+              ]
+            }
+          ]
+        },
+        {
+          id: 2,
+          period: "2024 — 2025",
+          introduction: "Desarrollé software interno y soluciones de automatización enfocadas en mejorar flujos de trabajo administrativos, gestión de datos, reportes y operaciones de mantenimiento.",
+          projects: [
+            {
+              title: "Sistema de Gestión de Mantenimiento y Facturación",
+              context: "Diseñé y desarrollé un sistema de gestión interno para centralizar la información de clientes, registros de equipos, actividades de mantenimiento y operaciones de facturación.",
+              description: undefined,
+              details: [
+                "Desarrollé módulos para la gestión de clientes y equipos.",
+                "Implementé la programación y seguimiento de actividades de mantenimiento.",
+                "Construí la funcionalidad de gestión de facturas.",
+                "Creé dashboards para monitorear información financiera y operativa.",
+                "Centralicé datos administrativos que antes se manejaban en distintos flujos de trabajo.",
+                "Implementé un calendario para organizar las próximas actividades de mantenimiento."
+              ]
+            },
+            {
+              title: "Automatización Administrativa con Excel",
+              context: undefined,
+              description: "Automaticé flujos de trabajo repetitivos de ingreso de datos administrativos usando macros VBA de Excel, reduciendo el trabajo manual y minimizando errores.",
+              details: []
+            },
+            {
+              title: "Sitio Web Corporativo",
+              context: undefined,
+              description: "Diseñé y desarrollé el sitio web institucional de la empresa utilizando WordPress, proporcionando una plataforma pública para información corporativa y contacto.",
+              details: []
+            }
+          ]
+        }
+      ]
     },
     projects: {
       sectionTitle: "Proyectos Destacados",

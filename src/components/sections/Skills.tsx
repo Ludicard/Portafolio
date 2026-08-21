@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Reveal from '../animations/Reveal';
+import { useLanguage } from '../../context/LanguageContext';
 
 type TechItem = {
   name: string;
@@ -133,19 +134,27 @@ const TechIcon = ({ item, category }: { item: TechItem, category: string }) => {
 };
 
 const Skills = () => {
+  const { t } = useLanguage();
+  
+  // Merge the translated category names with the static techArsenal
+  const localizedTechArsenal = techArsenal.map((category, index) => ({
+    ...category,
+    name: t.skills.categories[index].name
+  }));
+
   return (
     <section id="skills" className="min-h-[100svh] flex flex-col justify-center py-24 border-t border-white/5 bg-[#08090b]" aria-labelledby="skills-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
         
         <div className="mb-16">
           <Reveal delay={0}>
-            <h2 id="skills-heading" className="text-3xl font-bold text-white tracking-tight mb-2">Technical Arsenal</h2>
-            <p className="text-gray-500 font-medium tracking-wide text-sm uppercase">Technologies & Tools</p>
+            <h2 id="skills-heading" className="text-3xl font-bold text-white tracking-tight mb-2">{t.skills.sectionTitle}</h2>
+            <p className="text-gray-500 font-medium tracking-wide text-sm uppercase">{t.skills.sectionSubtitle}</p>
           </Reveal>
         </div>
 
         <div className="flex flex-col gap-12">
-          {techArsenal.map((category, index) => (
+          {localizedTechArsenal.map((category, index) => (
             <Reveal key={category.name} delay={100 + (index * 50)}>
               <div className="flex flex-col">
                 <h3 className="text-gray-400 text-sm font-medium uppercase tracking-widest mb-6">{category.name}</h3>

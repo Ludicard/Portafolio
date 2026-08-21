@@ -1,4 +1,5 @@
 import Reveal from '../animations/Reveal';
+import { useLanguage } from '../../context/LanguageContext';
 
 type Project = {
   title: string;
@@ -95,19 +96,38 @@ const experiences: ExperienceData[] = [
 ];
 
 const Experience = () => {
+  const { t } = useLanguage();
+  
+  // Merge translated texts with static tech stack
+  const localizedExperiences = experiences.map((exp, index) => {
+    const tExp = t.experience.items[index];
+    return {
+      ...exp,
+      period: tExp.period,
+      introduction: tExp.introduction,
+      projects: exp.projects.map((proj, pIndex) => ({
+        ...proj,
+        title: tExp.projects[pIndex].title,
+        context: tExp.projects[pIndex].context,
+        description: tExp.projects[pIndex].description,
+        details: tExp.projects[pIndex].details
+      }))
+    };
+  });
+
   return (
     <section id="experience" className="min-h-[100svh] flex flex-col justify-center py-24 border-t border-white/5" aria-labelledby="experience-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
         
         <div className="mb-16">
           <Reveal delay={0}>
-            <h2 id="experience-heading" className="text-3xl font-bold text-white tracking-tight mb-2">Experience</h2>
-            <p className="text-gray-500 font-medium tracking-wide text-sm uppercase">Where I've worked and what I've built</p>
+            <h2 id="experience-heading" className="text-3xl font-bold text-white tracking-tight mb-2">{t.experience.sectionTitle}</h2>
+            <p className="text-gray-500 font-medium tracking-wide text-sm uppercase">{t.experience.sectionSubtitle}</p>
           </Reveal>
         </div>
 
         <div className="relative border-l border-white/10 ml-3 sm:ml-4 space-y-20 pb-8">
-          {experiences.map((exp) => (
+          {localizedExperiences.map((exp) => (
             <div key={exp.id} className="relative pl-8 sm:pl-12">
               
               {/* Timeline marker */}

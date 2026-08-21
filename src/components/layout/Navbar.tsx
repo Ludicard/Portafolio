@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 
+const flagUs = "https://flagcdn.com/w40/us.png";
+const flagEs = "https://flagcdn.com/w40/es.png";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
@@ -62,7 +65,9 @@ const Navbar = () => {
                 className="flex items-center gap-2 p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-wine"
                 aria-label="Toggle language menu"
               >
-                <span className="text-xl leading-none">{language === 'en' ? '🇺🇸' : '🇪🇸'}</span>
+                <span className="flex items-center justify-center w-5 h-5">
+                  <img src={language === 'en' ? flagUs : flagEs} alt="Current language" className="w-5 h-auto rounded-sm object-cover shadow-sm" />
+                </span>
               </button>
               
               {isLangOpen && (
@@ -70,17 +75,17 @@ const Navbar = () => {
                   <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                     <button
                       onClick={() => { setLanguage('en'); setIsLangOpen(false); }}
-                      className={`block w-full text-left px-4 py-2 text-sm ${language === 'en' ? 'bg-wine/20 text-wine-light' : 'text-gray-300 hover:bg-white/5'} transition-colors`}
+                      className={`flex items-center w-full text-left px-4 py-2 text-sm ${language === 'en' ? 'bg-wine/20 text-wine-light' : 'text-gray-300 hover:bg-white/5'} transition-colors`}
                       role="menuitem"
                     >
-                      🇺🇸 English
+                      <img src={flagUs} alt="English" className="w-4 h-auto rounded-sm object-cover mr-2" /> English
                     </button>
                     <button
                       onClick={() => { setLanguage('es'); setIsLangOpen(false); }}
-                      className={`block w-full text-left px-4 py-2 text-sm ${language === 'es' ? 'bg-wine/20 text-wine-light' : 'text-gray-300 hover:bg-white/5'} transition-colors`}
+                      className={`flex items-center w-full text-left px-4 py-2 text-sm ${language === 'es' ? 'bg-wine/20 text-wine-light' : 'text-gray-300 hover:bg-white/5'} transition-colors`}
                       role="menuitem"
                     >
-                      🇪🇸 Español
+                      <img src={flagEs} alt="Español" className="w-4 h-auto rounded-sm object-cover mr-2" /> Español
                     </button>
                   </div>
                 </div>
