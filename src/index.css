@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
+/*
+ * Tema imperial carmesí: pétalos que caen
+ * y un degradado dorado → azul como acento principal.
+ */
 @theme {
-  --color-wine: #7f1d3f;
-  --color-wine-light: #9f2d50;
-  --color-background: #040814;
-  --color-surface: #070b1a;
+  --font-sans: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-display: "Cinzel", "Times New Roman", serif;
+
+  /* Fondo: negro cálido con un leve tinte carmesí */
+  --color-background: #0a0506;
+  --color-surface: #140a0c;
+  --color-surface-2: #1c0e11;
+
+  /* Acento principal: rojo carmesí */
+  --color-accent: #dc143c;
+  --color-accent-light: #ff6b81;
+  --color-accent-deep: #8b0a24;
+  --color-glow: #ff3b5c;
+  --color-petal-light: #ff9aab;
+  --color-petal-vein: #ffe0e6;
+
+  /* Acento secundario: dorado imperial */
+  --color-gold: #e6c46e;
+  --color-gold-dark: #b8913d;
+
+  --animate-petal-fall: petal-fall linear infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+
+  @keyframes petal-fall {
+    0% { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 0; }
+    10% { opacity: var(--petal-opacity, 0.7); }
+    90% { opacity: var(--petal-opacity, 0.7); }
+    100% { transform: translate3d(var(--petal-drift, 60px), 105vh, 0) rotate(var(--petal-rot, 540deg)); opacity: 0; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem; /* 80px for the h-20 navbar */
+  background-color: var(--color-background);
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Mismos acentos en formato "r,g,b" para sombras con transparencia */
+  --rgb-accent: 220, 20, 60;
+  --rgb-glow: 255, 59, 92;
+
+  font-family: var(--font-sans);
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
+  color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  background-color: var(--color-background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -31,4 +69,44 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  color: #fff;
+}
+
+/* Texto con el degradado dorado → azul */
+.text-imperial {
+  background: linear-gradient(100deg, var(--color-gold) 0%, #f3dc9c 30%, var(--color-accent-light) 65%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Borde con degradado para tarjetas destacadas */
+.border-imperial {
+  position: relative;
+}
+.border-imperial::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-gold) 55%, transparent), transparent 35%, transparent 65%, color-mix(in srgb, var(--color-accent) 70%, transparent));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Grano sutil para dar textura al fondo */
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-petal-fall, .animate-spin-slow, .animate-float { animation: none !important; }
 }

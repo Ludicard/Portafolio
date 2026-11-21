@@ -1,18 +1,16 @@
 import Reveal from '../animations/Reveal';
+import SectionHeading from '../decor/SectionHeading';
 import { useLanguage } from '../../context/LanguageContext';
 
 const About = () => {
   const { t } = useLanguage();
   return (
-    <section id="about" className="min-h-[100svh] flex flex-col justify-center py-24 border-t border-white/5" aria-labelledby="about-heading">
+    <section id="about" className="flex flex-col justify-center py-24 sm:py-32" aria-labelledby="about-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           
           <div className="lg:col-span-4 flex flex-col justify-start">
-            <Reveal delay={0}>
-              <h2 id="about-heading" className="text-3xl font-bold text-white tracking-tight mb-2">{t.about.sectionTitle}</h2>
-              <p className="text-gray-500 font-medium tracking-wide text-sm uppercase">{t.about.sectionSubtitle}</p>
-            </Reveal>
+            <SectionHeading id="about-heading" numeral="I" title={t.about.sectionTitle} subtitle={t.about.sectionSubtitle} />
           </div>
           
           <div className="lg:col-span-8">
@@ -27,10 +25,10 @@ const About = () => {
               </Reveal>
               
               <Reveal delay={200}>
-                <div className="mt-10 p-6 border border-white/5 rounded-lg bg-white/[0.02]">
-                  <h3 className="text-white text-base font-semibold mb-2">{t.about.corePhilosophy}</h3>
-                  <p className="text-sm text-gray-300 font-medium mb-2">{t.about.beUseful}</p>
-                  <p className="text-sm text-gray-400 m-0 leading-relaxed">
+                <div className="border-imperial relative mt-12 p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-surface-2/80 to-surface/40 overflow-hidden shadow-[0_20px_60px_-30px_rgba(var(--rgb-accent),0.6)]">
+                  <h3 className="font-display text-gold text-xs tracking-[0.3em] uppercase mb-4">{t.about.corePhilosophy}</h3>
+                  <p className="inline-block text-3xl sm:text-4xl font-bold text-imperial mb-4 tracking-tight">{t.about.beUseful}</p>
+                  <p className="relative text-base text-gray-300 m-0 leading-relaxed max-w-2xl">
                     {t.about.philosophyText}
                   </p>
                 </div>

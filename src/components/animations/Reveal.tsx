@@ -4,9 +4,10 @@ interface RevealProps {
   children: ReactNode;
   delay?: number;
   direction?: 'up' | 'down' | 'left' | 'right' | 'none';
+  className?: string;
 }
 
-const Reveal = ({ children, delay = 0, direction = 'up' }: RevealProps) => {
+const Reveal = ({ children, delay = 0, direction = 'up', className = '' }: RevealProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -56,7 +57,7 @@ const Reveal = ({ children, delay = 0, direction = 'up' }: RevealProps) => {
     <div
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`${baseClass} ${isVisible ? visibleClass : hiddenClass}`}
+      className={`${baseClass} ${isVisible ? visibleClass : hiddenClass} ${className}`}
     >
       {children}
     </div>

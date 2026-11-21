@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Reveal from '../animations/Reveal';
+import SectionHeading from '../decor/SectionHeading';
 import { useLanguage } from '../../context/LanguageContext';
 
 type TechItem = {
@@ -95,7 +96,7 @@ const TechIcon = ({ item, category }: { item: TechItem, category: string }) => {
   
   return (
     <div 
-      className="relative group flex items-center justify-center p-3 sm:p-4 rounded-xl border border-white/5 bg-[#0a0c10] hover:border-wine/60 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wine outline-none cursor-default" 
+      className="relative group flex items-center justify-center p-3 sm:p-4 rounded-xl border border-white/5 bg-surface/70 hover:border-accent-light/60 hover:bg-accent/10 hover:shadow-[0_0_24px_-4px_rgba(var(--rgb-accent),0.7)] hover:-translate-y-0.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent outline-none cursor-default" 
       tabIndex={0} 
       aria-label={`${item.name} - ${category}`}
     >
@@ -121,11 +122,11 @@ const TechIcon = ({ item, category }: { item: TechItem, category: string }) => {
       <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:-translate-y-1 group-focus:opacity-100 group-focus:-translate-y-1 transition-all duration-300 ease-out z-20 w-max min-w-[120px] max-w-[200px] motion-reduce:transition-none motion-reduce:transform-none">
         {/* Invisible bridge to prevent hover loss */}
         <div className="absolute top-full left-0 right-0 h-4 bg-transparent"></div>
-        <div className="bg-[#0f1115] border border-wine/30 rounded-lg py-2.5 px-3 shadow-xl shadow-black/80 flex flex-col items-center justify-center relative">
+        <div className="bg-surface-2 border border-accent/40 rounded-lg py-2.5 px-3 shadow-xl shadow-black/80 flex flex-col items-center justify-center relative">
           <span className="text-white text-sm font-semibold whitespace-normal text-center leading-tight mb-1">{item.name}</span>
-          <span className="text-wine-light text-[10px] font-bold uppercase tracking-widest text-center">{category}</span>
+          <span className="text-accent-light text-[10px] font-bold uppercase tracking-widest text-center">{category}</span>
           {/* Arrow */}
-          <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0f1115] border-b border-r border-wine/30 transform rotate-45"></div>
+          <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-surface-2 border-b border-r border-accent/40 transform rotate-45"></div>
         </div>
       </div>
       
@@ -143,21 +144,21 @@ const Skills = () => {
   }));
 
   return (
-    <section id="skills" className="min-h-[100svh] flex flex-col justify-center py-24 border-t border-white/5 bg-[#070b1a]" aria-labelledby="skills-heading">
+    <section id="skills" className="flex flex-col justify-center py-24 sm:py-32" aria-labelledby="skills-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
         
         <div className="mb-16">
-          <Reveal delay={0}>
-            <h2 id="skills-heading" className="text-3xl font-bold text-white tracking-tight mb-2">{t.skills.sectionTitle}</h2>
-            <p className="text-gray-500 font-medium tracking-wide text-sm uppercase">{t.skills.sectionSubtitle}</p>
-          </Reveal>
+          <SectionHeading id="skills-heading" numeral="III" title={t.skills.sectionTitle} subtitle={t.skills.sectionSubtitle} />
         </div>
 
-        <div className="flex flex-col gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {localizedTechArsenal.map((category, index) => (
             <Reveal key={category.name} delay={100 + (index * 50)}>
-              <div className="flex flex-col">
-                <h3 className="text-gray-400 text-sm font-medium uppercase tracking-widest mb-6">{category.name}</h3>
+              <div className="flex flex-col h-full p-6 rounded-2xl border border-white/5 bg-white/[0.015] hover:border-accent/25 transition-colors duration-300">
+                <h3 className="flex items-center gap-3 text-gray-300 text-sm font-semibold uppercase tracking-widest mb-5">
+                  <span className="h-1.5 w-1.5 rotate-45 bg-gradient-to-br from-gold to-accent-light" aria-hidden="true" />
+                  {category.name}
+                </h3>
                 <div className="flex flex-wrap gap-3 sm:gap-4">
                   {category.items.map((item) => (
                     <TechIcon key={item.name} item={item} category={category.name} />

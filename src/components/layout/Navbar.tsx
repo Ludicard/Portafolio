@@ -9,6 +9,34 @@ const Navbar = () => {
   const [isLangOpen, setIsLangOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const langRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState('');
+
+  // Fondo más sólido al hacer scroll
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Resalta el enlace de la sección visible
+  useEffect(() => {
+    const ids = ['hero', 'about', 'projects', 'experience', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -32,12 +60,14 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#0f1115]/90 backdrop-blur-md border-b border-white/5">
+    <header className={`fixed top-0 w-full z-50 backdrop-blur-md border-b transition-colors duration-300 ${scrolled ? 'bg-background/85 border-accent/15 shadow-[0_8px_30px_-12px_rgba(var(--rgb-accent),0.35)]' : 'bg-transparent border-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 w-full relative">
           
-          {/* Spacer for desktop symmetry */}
-          <div className="hidden md:block w-1/4"></div>
+          {/* Marca: rosa + nombre */}
+          <a href="#hero" className="group flex items-center gap-2.5 shrink-0 md:w-1/4 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light rounded-md" aria-label="Inicio">
+            <span className="font-display text-lg font-semibold tracking-[0.2em] text-imperial">SERGIO</span>
+          </a>
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex justify-center flex-1" aria-label="Desktop navigation">
@@ -46,9 +76,10 @@ const Navbar = () => {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-wine-light text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-wine rounded-sm px-1 py-0.5"
+                    className={`relative text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm px-1 py-1 ${active === link.href.slice(1) ? 'text-white' : 'text-gray-400 hover:text-accent-light'}`}
                   >
                     {link.name}
+                    <span className={`absolute left-1/2 -bottom-1 h-px -translate-x-1/2 bg-gradient-to-r from-gold to-accent-light transition-all duration-300 ${active === link.href.slice(1) ? 'w-full' : 'w-0'}`} />
                   </a>
                 </li>
               ))}
@@ -56,13 +87,13 @@ const Navbar = () => {
           </nav>
 
           {/* Right Controls */}
-          <div className="flex items-center justify-end w-full md:w-1/4 gap-4">
+          <div className="flex items-center justify-end md:w-1/4 gap-4">
             
             {/* Language Switcher */}
             <div className="relative" ref={langRef}>
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="flex items-center gap-2 p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-wine"
+                className="flex items-center gap-2 p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-accent"
                 aria-label="Toggle language menu"
               >
                 <span className="flex items-center justify-center w-5 h-5">
@@ -71,18 +102,18 @@ const Navbar = () => {
               </button>
               
               {isLangOpen && (
-                <div className="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-[#1a1f2e] ring-1 ring-black ring-opacity-5 border border-white/10 overflow-hidden z-50">
+                <div className="absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-surface-2 border border-accent/25 overflow-hidden z-50">
                   <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                     <button
                       onClick={() => { setLanguage('en'); setIsLangOpen(false); }}
-                      className={`flex items-center w-full text-left px-4 py-2 text-sm ${language === 'en' ? 'bg-wine/20 text-wine-light' : 'text-gray-300 hover:bg-white/5'} transition-colors`}
+                      className={`flex items-center w-full text-left px-4 py-2 text-sm ${language === 'en' ? 'bg-accent/20 text-accent-light' : 'text-gray-300 hover:bg-white/5'} transition-colors`}
                       role="menuitem"
                     >
                       <img src={flagUs} alt="English" className="w-4 h-auto rounded-sm object-cover mr-2" /> English
                     </button>
                     <button
                       onClick={() => { setLanguage('es'); setIsLangOpen(false); }}
-                      className={`flex items-center w-full text-left px-4 py-2 text-sm ${language === 'es' ? 'bg-wine/20 text-wine-light' : 'text-gray-300 hover:bg-white/5'} transition-colors`}
+                      className={`flex items-center w-full text-left px-4 py-2 text-sm ${language === 'es' ? 'bg-accent/20 text-accent-light' : 'text-gray-300 hover:bg-white/5'} transition-colors`}
                       role="menuitem"
                     >
                       <img src={flagEs} alt="Español" className="w-4 h-auto rounded-sm object-cover mr-2" /> Español
@@ -97,7 +128,7 @@ const Navbar = () => {
               <button
                 onClick={toggleMenu}
                 type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-wine-light hover:bg-wine/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-wine transition-colors"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-accent-light hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent transition-colors"
                 aria-controls="mobile-menu"
                 aria-expanded={isOpen}
                 aria-label="Toggle navigation menu"
@@ -120,7 +151,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div 
-        className={`md:hidden ${isOpen ? 'block' : 'hidden'} bg-[#0f1115] border-b border-white/5`} 
+        className={`md:hidden ${isOpen ? 'block' : 'hidden'} bg-background/95 border-b border-accent/15`} 
         id="mobile-menu"
       >
         <div className="px-4 pt-2 pb-6 space-y-1 sm:px-6">
@@ -129,7 +160,7 @@ const Navbar = () => {
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-3 text-base font-medium text-gray-300 hover:text-wine-light hover:bg-wine/10 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-wine"
+              className="block px-3 py-3 text-base font-medium text-gray-300 hover:text-accent-light hover:bg-accent/10 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-accent"
             >
               {link.name}
             </a>

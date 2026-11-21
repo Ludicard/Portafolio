@@ -17,7 +17,13 @@ export const translations = {
       viewProjects: "View Projects",
       getInTouch: "Get in Touch",
       downloadCv: "Download CV",
-      scrollDown: "Scroll Down"
+      scrollDown: "Scroll Down",
+      available: "Available for work",
+      stats: [
+        { value: "3", label: "Full-stack projects" },
+        { value: "2", label: "Companies" },
+        { value: "20+", label: "REST endpoints built" }
+      ]
     },
     about: {
       sectionTitle: "About",
@@ -120,23 +126,41 @@ export const translations = {
       liveDemo: "Live Demo",
       sourceCode: "Source Code",
       imagePlaceholder: "Image Placeholder",
+      viewMore: "Read full description",
+      viewLess: "Show less",
+      problem: "Problem",
+      solution: "Solution",
+      result: "Result",
+      status: { live: "Live", mobile: "Mobile app", development: "In development" },
       items: [
         {
           id: 1,
           name: "Enterprise Management Assistant (EMA)",
           description: "A full-stack business management platform designed to help small and medium-sized companies manage their operations from a centralized system. EMA provides secure authentication, company and user management, client administration, invoice tracking, payment status management, and business dashboard metrics. The application was built with a modular architecture using React, TypeScript, NestJS, Prisma, and PostgreSQL, with the entire stack containerized using Docker Compose. The deployment is automated through GitHub Actions to a production VPS, with database migrations managed through Prisma and services isolated through Docker networks.",
+          summary: "A business management platform that centralizes clients, invoices and payments for small and medium-sized companies.",
+          problem: "SMEs track clients, invoices and payment status across scattered tools and spreadsheets.",
+          solution: "A modular React + NestJS platform with secure authentication, multi-company user management, invoice tracking and a metrics dashboard.",
+          result: "Running in production on a VPS, fully containerized with Docker and deployed automatically through GitHub Actions.",
           category: "Full Stack Application"
         },
         {
           id: 2,
           name: "FlowPlan — Intelligent Personal Planning System",
           description: "A full-stack personal productivity platform designed to help users organize their time through intelligent management of tasks, goals, and calendar events. FlowPlan combines a traditional calendar with a planning engine capable of identifying available time blocks and generating prioritized activity recommendations based on pending tasks. The system also includes work session tracking and a weekly productivity scoring system to encourage consistent habits. The project was developed by refactoring an existing MVC application into a decoupled REST API architecture, applying SOLID principles and design patterns such as Repository and Strategy to improve maintainability, scalability, reusability, and separation of concerns. The backend was built with Node.js and Express, using Prisma ORM with PostgreSQL, while the mobile client was developed with React Native and Expo.",
+          summary: "A mobile productivity app that finds free time in your schedule and recommends what to work on next.",
+          problem: "A calendar shows when you are busy, but not how to make the most of the free time you have.",
+          solution: "A planning engine that detects available time blocks and suggests prioritized tasks, plus work-session tracking and a weekly productivity score.",
+          result: "Refactored from an MVC app into a decoupled REST API using SOLID, Repository and Strategy patterns, with a React Native client.",
           category: "Full Stack Application"
         },
         {
           id: 3,
           name: "NAV-I",
           description: "A full-stack website monitoring and automated diagnosis platform designed to track the health, performance, and security of web applications. NAV-I provides automated scheduled scans, Lighthouse performance metrics, SSL certificate tracking, and AI-powered diagnoses using the Anthropic API. The platform features an interactive dashboard for managing alerts, tasks, and historical events across multiple websites. It was built with a modern architecture using React, TypeScript, Express, Prisma, and PostgreSQL, with background tasks managed via Node-Cron. The entire stack is containerized using Docker Compose for seamless deployment and isolated environments, while database migrations and data modeling are handled through Prisma.",
+          summary: "A monitoring platform that scans websites on a schedule and uses AI to diagnose health, performance and security issues.",
+          problem: "Catching performance drops, expiring SSL certificates and errors across many sites requires constant manual checks.",
+          solution: "Scheduled scans with Lighthouse metrics and SSL tracking, plus AI-powered diagnoses through the Anthropic API in an alerts dashboard.",
+          result: "A containerized full-stack app (React, Express, Prisma, PostgreSQL) with background jobs managed by node-cron.",
           category: "Full Stack Application"
         }
       ]
@@ -171,6 +195,8 @@ export const translations = {
     contact: {
       title: "Let's work together.",
       subtitle: "Currently open for new opportunities. Whether you have a question or just want to say hi, feel free to reach out.",
+      copyEmail: "Copy email",
+      copied: "Copied!",
     },
     footer: {
       rights: "All rights reserved."
@@ -192,7 +218,13 @@ export const translations = {
       viewProjects: "Ver Proyectos",
       getInTouch: "Contactar",
       downloadCv: "Descargar CV",
-      scrollDown: "Bajar"
+      scrollDown: "Bajar",
+      available: "Disponible para trabajar",
+      stats: [
+        { value: "3", label: "Proyectos full-stack" },
+        { value: "2", label: "Empresas" },
+        { value: "20+", label: "Endpoints REST creados" }
+      ]
     },
     about: {
       sectionTitle: "Sobre mí",
@@ -295,23 +327,41 @@ export const translations = {
       liveDemo: "Ver Demo",
       sourceCode: "Código Fuente",
       imagePlaceholder: "Sin Imagen",
+      viewMore: "Leer descripción completa",
+      viewLess: "Mostrar menos",
+      problem: "Problema",
+      solution: "Solución",
+      result: "Resultado",
+      status: { live: "En producción", mobile: "App móvil", development: "En desarrollo" },
       items: [
         {
           id: 1,
           name: "Enterprise Management Assistant (EMA)",
           description: "Una plataforma full-stack de gestión empresarial diseñada para ayudar a pequeñas y medianas empresas a administrar sus operaciones desde un sistema centralizado. EMA ofrece autenticación segura, gestión de usuarios y empresas, administración de clientes, seguimiento de facturas, estado de pagos y métricas en un dashboard empresarial. La aplicación fue construida con una arquitectura modular utilizando React, TypeScript, NestJS, Prisma y PostgreSQL, con todo el stack en contenedores usando Docker Compose. El despliegue está automatizado mediante GitHub Actions a un VPS de producción, con migraciones de base de datos gestionadas a través de Prisma y servicios aislados mediante redes Docker.",
+          summary: "Una plataforma de gestión empresarial que centraliza clientes, facturas y pagos para pequeñas y medianas empresas.",
+          problem: "Las pymes llevan clientes, facturas y estados de pago en herramientas y hojas de cálculo dispersas.",
+          solution: "Una plataforma modular en React + NestJS con autenticación segura, gestión de usuarios por empresa, seguimiento de facturas y un dashboard de métricas.",
+          result: "En producción en un VPS, totalmente en contenedores Docker y desplegada automáticamente con GitHub Actions.",
           category: "Aplicación Full Stack"
         },
         {
           id: 2,
           name: "FlowPlan — Sistema de Planificación Inteligente",
           description: "Una plataforma full-stack de productividad personal diseñada para ayudar a los usuarios a organizar su tiempo mediante la gestión inteligente de tareas, metas y eventos del calendario. FlowPlan combina un calendario tradicional con un motor de planificación capaz de identificar bloques de tiempo disponibles y generar recomendaciones de actividades priorizadas basadas en tareas pendientes. El sistema también incluye seguimiento de sesiones de trabajo y un sistema semanal de puntuación de productividad para fomentar hábitos consistentes. El proyecto se desarrolló refactorizando una aplicación MVC existente hacia una arquitectura REST API desacoplada, aplicando principios SOLID y patrones de diseño como Repository y Strategy para mejorar la mantenibilidad, escalabilidad y separación de preocupaciones. El backend fue construido con Node.js y Express, usando el ORM Prisma con PostgreSQL, mientras que el cliente móvil fue desarrollado con React Native y Expo.",
+          summary: "Una app móvil de productividad que encuentra tu tiempo libre y te recomienda en qué trabajar a continuación.",
+          problem: "Un calendario muestra cuándo estás ocupado, pero no cómo aprovechar el tiempo libre que tienes.",
+          solution: "Un motor de planificación que detecta bloques de tiempo disponibles y sugiere tareas priorizadas, con seguimiento de sesiones y una puntuación semanal de productividad.",
+          result: "Refactorizada de una app MVC a una REST API desacoplada con SOLID y los patrones Repository y Strategy, con cliente en React Native.",
           category: "Aplicación Full Stack"
         },
         {
           id: 3,
           name: "NAV-I",
           description: "Una plataforma full-stack de monitoreo y diagnóstico automatizado de sitios web diseñada para rastrear la salud, rendimiento y seguridad de aplicaciones web. NAV-I proporciona escaneos programados automatizados, métricas de rendimiento de Lighthouse, seguimiento de certificados SSL y diagnósticos impulsados por IA utilizando la API de Anthropic. La plataforma cuenta con un panel interactivo para gestionar alertas, tareas y eventos históricos en múltiples sitios web. Fue construida con una arquitectura moderna usando React, TypeScript, Express, Prisma y PostgreSQL, con tareas en segundo plano gestionadas mediante Node-Cron. Todo el stack está en contenedores usando Docker Compose para un despliegue sin problemas y entornos aislados, mientras que las migraciones de bases de datos y el modelado de datos se manejan a través de Prisma.",
+          summary: "Una plataforma de monitoreo que escanea sitios web de forma programada y usa IA para diagnosticar su salud, rendimiento y seguridad.",
+          problem: "Detectar caídas de rendimiento, certificados SSL por vencer y errores en varios sitios exige revisiones manuales constantes.",
+          solution: "Escaneos programados con métricas de Lighthouse y seguimiento de SSL, más diagnósticos con IA mediante la API de Anthropic en un panel de alertas.",
+          result: "Una app full-stack en contenedores (React, Express, Prisma, PostgreSQL) con tareas en segundo plano gestionadas por node-cron.",
           category: "Aplicación Full Stack"
         }
       ]
@@ -346,6 +396,8 @@ export const translations = {
     contact: {
       title: "Trabajemos juntos.",
       subtitle: "Actualmente abierto a nuevas oportunidades. Ya sea que tengas una pregunta o solo quieras saludar, no dudes en contactarme.",
+      copyEmail: "Copiar correo",
+      copied: "¡Copiado!",
     },
     footer: {
       rights: "Todos los derechos reservados."

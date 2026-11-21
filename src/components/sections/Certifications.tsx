@@ -1,4 +1,5 @@
 import Reveal from '../animations/Reveal';
+import SectionHeading from '../decor/SectionHeading';
 import { useLanguage } from '../../context/LanguageContext';
 
 const Certifications = () => {
@@ -16,27 +17,27 @@ const Certifications = () => {
   ];
 
   return (
-    <section id="certifications" className="min-h-[100svh] flex flex-col justify-center py-24 border-t border-white/5" aria-labelledby="certifications-heading">
+    <section id="certifications" className="flex flex-col justify-center py-24 sm:py-32" aria-labelledby="certifications-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
         
         <div className="mb-12">
-          <Reveal delay={0}>
-            <h2 id="certifications-heading" className="text-3xl font-bold text-white tracking-tight mb-2">{t.certifications.sectionTitle}</h2>
-            <p className="text-gray-500 font-medium tracking-wide text-sm uppercase">{t.certifications.sectionSubtitle}</p>
-          </Reveal>
+          <SectionHeading id="certifications-heading" numeral="VI" title={t.certifications.sectionTitle} subtitle={t.certifications.sectionSubtitle} />
         </div>
 
-        <div className="flex flex-col space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {certifications.map((cert, index) => (
             <Reveal key={cert.id} delay={100 + (index * 100)}>
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between p-6 border border-white/5 rounded-lg bg-white/[0.01] hover:bg-white/[0.02] transition-colors group">
-                <div className="mb-4 sm:mb-0">
+              <div className="h-full flex flex-col justify-between gap-6 p-7 border border-white/5 rounded-2xl bg-white/[0.015] hover:border-accent/30 hover:bg-accent/[0.04] hover:-translate-y-1 hover:shadow-[0_20px_50px_-30px_rgba(var(--rgb-accent),0.8)] transition-all duration-300 group">
+                <div>
+                  <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gold/30 bg-gold/[0.06] text-gold" aria-hidden="true">
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" /></svg>
+                  </div>
                   <h3 className="text-lg font-bold text-white group-hover:text-gray-200 transition-colors">{cert.name}</h3>
-                  <p className="text-wine-light font-medium tracking-wide text-sm mt-1">{cert.institution}</p>
+                  <p className="text-accent-light font-medium tracking-wide text-sm mt-1">{cert.institution}</p>
                 </div>
                 <a 
                   href={cert.link}
-                  className="inline-flex items-center text-sm font-medium text-gray-300 hover:text-wine-light transition-colors"
+                  className="inline-flex items-center self-start text-sm font-medium text-accent-light hover:text-white transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
