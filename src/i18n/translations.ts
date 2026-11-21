@@ -50,7 +50,7 @@ export const translations = {
         {
           id: 1,
           period: "October 2025 — November 2026",
-          introduction: "Working across full-stack development to build business applications, automate internal processes, and integrate modern technologies into real-world products.",
+          introduction: "Worked across full-stack development, building business applications, automating internal processes, and integrating modern technologies into real-world products.",
           projects: [
             {
               title: "E-commerce & Electronic Invoicing",
@@ -225,7 +225,7 @@ export const translations = {
         {
           id: 1,
           period: "Octubre 2025 — Noviembre 2026",
-          introduction: "Trabajando en desarrollo full-stack para construir aplicaciones empresariales, automatizar procesos internos e integrar tecnologías modernas en productos del mundo real.",
+          introduction: "Trabajé en desarrollo full-stack, construyendo aplicaciones empresariales, automatizando procesos internos e integrando tecnologías modernas en productos del mundo real.",
           projects: [
             {
               title: "E-commerce y Facturación Electrónica",
