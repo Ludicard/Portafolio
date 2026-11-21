@@ -27,7 +27,7 @@ const experiences: ExperienceData[] = [
     company: "Alluc Electrónica",
     location: "Quito, Ecuador",
     role: "Full Stack Developer",
-    period: "October 2025 — Present",
+    period: "October 2025 — November 2026",
     introduction: "Working across full-stack development to build business applications, automate internal processes, and integrate modern technologies into real-world products.",
     projects: [
       {
