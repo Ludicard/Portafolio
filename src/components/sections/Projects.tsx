@@ -7,6 +7,11 @@ import naviImg from '../../assets/images/NAVI.png';
 import flow1Img from '../../assets/images/flow1.jpeg';
 import flow2Img from '../../assets/images/flow2.jpeg';
 import flow3Img from '../../assets/images/flow3.jpeg';
+import noveraImg from '../../assets/images/novera.webp';
+import onalert1 from '../../assets/images/onalert-1.webp';
+import onalert2 from '../../assets/images/onalert-2.webp';
+import onalert3 from '../../assets/images/onalert-3.webp';
+import ordoImg from '../../assets/images/ordo-thumb.webp';
 import { useLanguage } from '../../context/LanguageContext';
 
 type Status = 'live' | 'mobile' | 'development';
@@ -25,6 +30,21 @@ const TECH_ICONS: Record<string, string> = {
   'GitHub Actions': 'githubactions',
   Expo: 'expo',
   'Tailwind CSS': 'tailwindcss',
+  Python: 'python',
+  Django: 'django',
+  'Chart.js': 'chartdotjs',
+  PHP: 'php',
+  MySQL: 'mysql',
+  ESP32: 'espressif',
+  SQLite: 'sqlite',
+  'C#': 'dotnet',
+  '.NET MAUI': 'dotnet',
+  'ASP.NET MVC': 'dotnet',
+  Gemini: 'googlegemini',
+  SonarQube: 'sonarqube',
+  Vite: 'vite',
+  Vitest: 'vitest',
+  'Anthropic API': 'anthropic',
 };
 
 const TechChip = ({ name }: { name: string }) => {
@@ -67,9 +87,10 @@ const Projects = () => {
   const { t } = useLanguage();
   const [expanded, setExpanded] = useState<number | null>(null);
 
+  const [ema, onalert, novera, flowplan] = t.projects.items;
   const projects = [
     {
-      ...t.projects.items[0],
+      ...ema,
       status: 'live' as Status,
       technologies: ["React", "TypeScript", "NestJS", "Node.js", "PostgreSQL", "Prisma", "Docker", "GitHub Actions"],
       link: "https://ema.aurelianova.tech/dashboard",
@@ -79,7 +100,27 @@ const Projects = () => {
       mobileImages: undefined,
     },
     {
-      ...t.projects.items[1],
+      ...onalert,
+      status: 'mobile' as Status,
+      technologies: ["React Native", "Expo", "TypeScript", "PHP", "MySQL", "ESP32"],
+      link: "",
+      url: "",
+      repo: "",
+      image: "",
+      mobileImages: [onalert1, onalert2, onalert3],
+    },
+    {
+      ...novera,
+      status: 'live' as Status,
+      technologies: ["Python", "Django", "PostgreSQL", "Docker", "Chart.js", "GitHub Actions"],
+      link: "",
+      url: "",
+      repo: "https://github.com/Ludicard/Novera",
+      image: noveraImg,
+      mobileImages: undefined,
+    },
+    {
+      ...flowplan,
       status: 'mobile' as Status,
       technologies: ["React Native", "Expo", "Node.js", "Express", "PostgreSQL", "Prisma", "REST API", "SOLID", "Design Patterns"],
       link: "",
@@ -88,17 +129,18 @@ const Projects = () => {
       image: "",
       mobileImages: [flow1Img, flow2Img, flow3Img],
     },
-    {
-      ...t.projects.items[2],
-      status: 'development' as Status,
-      technologies: ["React", "TypeScript", "Express", "Node.js", "PostgreSQL", "Prisma", "Docker", "Tailwind CSS"],
-      link: "",
-      url: "",
-      repo: "",
-      image: naviImg,
-      mobileImages: undefined,
-    },
   ];
+
+  // Proyectos secundarios (cuadrícula "Más proyectos")
+  const moreMeta = [
+    { image: naviImg, icon: "", technologies: ["React", "TypeScript", "Express", "Anthropic API"], repo: "" },
+    { image: ordoImg, icon: "", technologies: ["React Native", "Expo", "SQLite", "Vitest"], repo: "https://github.com/Ludicard/Ordo-Crescendi" },
+    { image: "", icon: "dotnet", technologies: ["C#", ".NET MAUI", "SQLite"], repo: "https://github.com/Ludicard/Equipment-Maintenance-Assistant" },
+    { image: "", icon: "python", technologies: ["Python", "SQLite", "SonarQube"], repo: "https://github.com/Ludicard/mediclinic" },
+    { image: "", icon: "googlegemini", technologies: ["ASP.NET MVC", "Gemini", "OpenAI"], repo: "https://github.com/Ludicard/AI-utilizando-APIs" },
+    { image: "", icon: "react", technologies: ["React", "Vite", "Tailwind CSS"], repo: "https://github.com/Ludicard/TaxiCoop-Dispatch-Platform-" },
+  ];
+  const moreProjects = t.projects.more.map((m, i) => ({ ...m, ...moreMeta[i] }));
 
   return (
     <section id="projects" className="flex flex-col justify-center py-24 sm:py-32" aria-labelledby="projects-heading">
@@ -244,6 +286,64 @@ const Projects = () => {
               </article>
             );
           })}
+        </div>
+
+        {/* Más proyectos */}
+        <div className="mt-32 sm:mt-40">
+          <Reveal>
+            <div className="flex items-end justify-between gap-6 mb-10">
+              <div>
+                <p className="font-display text-gold text-xs tracking-[0.3em] uppercase mb-3">{t.projects.moreSubtitle}</p>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{t.projects.moreTitle}</h3>
+              </div>
+              <a href="https://github.com/Ludicard?tab=repositories" target="_blank" rel="noopener noreferrer" className="hidden sm:inline-flex items-center text-sm font-medium text-gray-400 hover:text-accent-light transition-colors">
+                GitHub
+                <svg className="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              </a>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {moreProjects.map((mp, i) => (
+              <Reveal key={mp.name} delay={(i % 3) * 100} className="h-full">
+                <article className="group h-full flex flex-col rounded-2xl border border-white/5 bg-white/[0.015] overflow-hidden hover:border-accent/30 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(var(--rgb-accent),0.9)] transition-all duration-300">
+                  {/* Miniatura */}
+                  <div className="relative h-40 overflow-hidden border-b border-white/5 bg-surface">
+                    {mp.image ? (
+                      <img src={mp.image} alt={mp.name} loading="lazy" className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-[1.04] transition-all duration-500" />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_30%_20%,rgba(var(--rgb-accent),0.35),transparent_60%),radial-gradient(circle_at_80%_90%,rgba(230,196,110,0.12),transparent_55%)]">
+                        <img
+                          src={`https://cdn.simpleicons.org/${mp.icon}/ff6b81`}
+                          alt=""
+                          loading="lazy"
+                          className="h-16 w-16 opacity-80 drop-shadow-[0_0_18px_rgba(var(--rgb-glow),0.6)] group-hover:scale-110 group-hover:opacity-100 transition-all duration-500"
+                        />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent pointer-events-none" aria-hidden="true" />
+                  </div>
+
+                  <div className="flex-1 flex flex-col p-6">
+                    <p className="font-display text-gold text-[10px] tracking-[0.25em] uppercase mb-2">{mp.category}</p>
+                    <h4 className="text-lg font-bold text-white mb-2">{mp.name}</h4>
+                    <p className="text-sm text-gray-400 leading-relaxed mb-5 flex-1">{mp.summary}</p>
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {mp.technologies.map((tech) => (
+                        <span key={tech} className="px-2.5 py-1 text-[11px] font-medium rounded-full border border-white/10 bg-white/[0.03] text-gray-300">{tech}</span>
+                      ))}
+                    </div>
+                    {mp.repo && (
+                      <a href={mp.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center self-start text-sm font-medium text-accent-light hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light rounded">
+                        <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" /></svg>
+                        {t.projects.viewCode}
+                      </a>
+                    )}
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
 
       </div>

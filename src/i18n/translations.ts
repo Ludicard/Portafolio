@@ -20,7 +20,7 @@ export const translations = {
       scrollDown: "Scroll Down",
       available: "Available for work",
       stats: [
-        { value: "3", label: "Full-stack projects" },
+        { value: "10", label: "Projects built" },
         { value: "2", label: "Companies" },
         { value: "20+", label: "REST endpoints built" }
       ]
@@ -145,6 +145,26 @@ export const translations = {
         },
         {
           id: 2,
+          name: "OnAlert — Community Alarm System",
+          description: "OnAlert is a community safety platform. The React Native app lets neighbors raise an SOS or report specific incidents (robbery, suspicious activity, fire, medical, violence, accident), each with an automatic priority, location and description. Every incident has an emergency chat and a 'I'm safe' confirmation so the community knows who is fine. Community admins validate, reject or close reports from a monitoring panel, and there is a history with statistics. The PHP and MySQL backend manages communities through invite codes, incidents and chat, and exposes endpoints that an ESP32 polls to play the right alarm sound in each zone.",
+          summary: "A neighborhood safety app with an SOS button, incident reports and an emergency chat that also triggers physical alarms through an ESP32.",
+          problem: "When something happens in a neighborhood, alerts spread slowly through chat groups and nobody knows who is safe.",
+          solution: "Neighbors report incidents by type and priority, confirm they are safe and coordinate in a chat; admins validate reports, and a PHP/MySQL API queues commands that an ESP32 plays as an audible alarm in each zone.",
+          result: "Mobile, backend and IoT working together: an alert sent from a phone sounds the physical alarm of the right zone.",
+          category: "Mobile + IoT"
+        },
+        {
+          id: 3,
+          name: "Novera — Accounts Receivable System",
+          description: "Novera manages accounts receivable. Invoices are registered with their SRI number, credit days and VAT, and the due date and totals are calculated automatically. Payments can be partial and made by transfer, deposit, check, cash or withholding, and the invoice status (pending, partial, overdue, paid, void) is always derived from the data, never set by hand. The dashboard shows invoiced vs. collected by month, aging of outstanding balances, invoices by status and top clients, with filters by period and client. It includes live search, sortable columns, bulk actions, Excel export, a guided importer for the historical spreadsheet and FactureroMovil reports, and the Django admin for tasks such as merging duplicated clients.",
+          summary: "A web system that replaces an Excel spreadsheet for tracking invoices, partial payments and collections.",
+          problem: "Invoices and payments were tracked by hand in a spreadsheet, so it was hard to know what was overdue and how much was still owed.",
+          solution: "A Django app where each invoice's status is calculated from its payments and due date, with a collections dashboard, client statements, Excel import and export, and imports from FactureroMovil.",
+          result: "Containerized with Docker and PostgreSQL and deployed to a VPS by a CI pipeline that runs the tests before every release.",
+          category: "Web Application"
+        },
+        {
+          id: 4,
           name: "FlowPlan — Intelligent Personal Planning System",
           description: "A full-stack personal productivity platform designed to help users organize their time through intelligent management of tasks, goals, and calendar events. FlowPlan combines a traditional calendar with a planning engine capable of identifying available time blocks and generating prioritized activity recommendations based on pending tasks. The system also includes work session tracking and a weekly productivity scoring system to encourage consistent habits. The project was developed by refactoring an existing MVC application into a decoupled REST API architecture, applying SOLID principles and design patterns such as Repository and Strategy to improve maintainability, scalability, reusability, and separation of concerns. The backend was built with Node.js and Express, using Prisma ORM with PostgreSQL, while the mobile client was developed with React Native and Expo.",
           summary: "A mobile productivity app that finds free time in your schedule and recommends what to work on next.",
@@ -152,17 +172,18 @@ export const translations = {
           solution: "A planning engine that detects available time blocks and suggests prioritized tasks, plus work-session tracking and a weekly productivity score.",
           result: "Refactored from an MVC app into a decoupled REST API using SOLID, Repository and Strategy patterns, with a React Native client.",
           category: "Full Stack Application"
-        },
-        {
-          id: 3,
-          name: "NAV-I",
-          description: "A full-stack website monitoring and automated diagnosis platform designed to track the health, performance, and security of web applications. NAV-I provides automated scheduled scans, Lighthouse performance metrics, SSL certificate tracking, and AI-powered diagnoses using the Anthropic API. The platform features an interactive dashboard for managing alerts, tasks, and historical events across multiple websites. It was built with a modern architecture using React, TypeScript, Express, Prisma, and PostgreSQL, with background tasks managed via Node-Cron. The entire stack is containerized using Docker Compose for seamless deployment and isolated environments, while database migrations and data modeling are handled through Prisma.",
-          summary: "A monitoring platform that scans websites on a schedule and uses AI to diagnose health, performance and security issues.",
-          problem: "Catching performance drops, expiring SSL certificates and errors across many sites requires constant manual checks.",
-          solution: "Scheduled scans with Lighthouse metrics and SSL tracking, plus AI-powered diagnoses through the Anthropic API in an alerts dashboard.",
-          result: "A containerized full-stack app (React, Express, Prisma, PostgreSQL) with background jobs managed by node-cron.",
-          category: "Full Stack Application"
         }
+      ],
+      moreTitle: "More projects",
+      moreSubtitle: "Other things I've built",
+      viewCode: "View code",
+      more: [
+        { name: "NAV-I", summary: "Website monitoring platform with scheduled scans, Lighthouse metrics, SSL tracking and AI-powered diagnoses through the Anthropic API.", category: "Full Stack" },
+        { name: "Ordo Crescendi", summary: "Gamified personal-growth app: daily missions that earn EXP by route, a punishment roulette and missions generated by AI from a JSON format.", category: "Mobile" },
+        { name: "Equipment Maintenance Assistant", summary: "Cross-platform .NET MAUI app to manage clients, work orders, quotes, invoices, payments and expenses for a maintenance business.", category: "Cross-platform" },
+        { name: "MediClinic", summary: "Clinic management system for patients, appointments and reports, built in layers and checked with static analysis tools (Pylint, Flake8, Bandit, SonarQube).", category: "Backend" },
+        { name: "AI Chatbot", summary: "ASP.NET MVC chatbot that switches between Google Gemini and OpenAI GPT using the Factory and Repository patterns.", category: "AI" },
+        { name: "TaxiCoop Dispatch", summary: "Dispatch dashboard for a taxi cooperative with KPIs and driver and ride management (frontend prototype).", category: "Frontend" }
       ]
     },
     education: {
@@ -221,7 +242,7 @@ export const translations = {
       scrollDown: "Bajar",
       available: "Disponible para trabajar",
       stats: [
-        { value: "3", label: "Proyectos full-stack" },
+        { value: "10", label: "Proyectos construidos" },
         { value: "2", label: "Empresas" },
         { value: "20+", label: "Endpoints REST creados" }
       ]
@@ -346,6 +367,26 @@ export const translations = {
         },
         {
           id: 2,
+          name: "OnAlert — Sistema de Alarma Comunitaria",
+          description: "OnAlert es una plataforma de seguridad comunitaria. La app en React Native permite a los vecinos lanzar un SOS o reportar incidentes específicos (robo, actividad sospechosa, incendio, emergencia médica, violencia, accidente), cada uno con prioridad automática, ubicación y descripción. Cada incidente tiene un chat de emergencia y una confirmación de 'Estoy bien' para que la comunidad sepa quién está a salvo. Los administradores validan, rechazan o cierran reportes desde un panel de monitoreo, y hay un historial con estadísticas. El backend en PHP y MySQL gestiona comunidades mediante códigos de invitación, incidentes y chat, y expone endpoints que un ESP32 consulta para reproducir la alarma adecuada en cada zona.",
+          summary: "Una app de seguridad vecinal con botón SOS, reportes de incidentes y chat de emergencia que además activa alarmas físicas mediante un ESP32.",
+          problem: "Cuando algo pasa en un barrio, las alertas se difunden lento por grupos de chat y nadie sabe quién está a salvo.",
+          solution: "Los vecinos reportan incidentes por tipo y prioridad, confirman que están bien y se coordinan en un chat; los administradores validan los reportes y una API en PHP/MySQL encola comandos que un ESP32 reproduce como alarma sonora en cada zona.",
+          result: "Móvil, backend e IoT trabajando juntos: una alerta enviada desde el teléfono hace sonar la alarma física de la zona correcta.",
+          category: "Móvil + IoT"
+        },
+        {
+          id: 3,
+          name: "Novera — Sistema de Cuentas por Cobrar",
+          description: "Novera gestiona las cuentas por cobrar. Las facturas se registran con su número SRI, días de crédito e IVA, y la fecha de cobro y los totales se calculan solos. Los pagos pueden ser abonos parciales por transferencia, depósito, cheque, efectivo o retención, y el estado de la factura (pendiente, abono parcial, vencida, pagada, anulada) siempre se deriva de los datos, nunca se escribe a mano. El panel muestra facturado vs. cobrado por mes, antigüedad de la cartera, facturas por estado y principales clientes, con filtros por periodo y cliente. Incluye búsqueda en vivo, columnas ordenables, acciones en lote, exportación a Excel, un importador guiado del Excel histórico y de los reportes de FactureroMovil, y el admin de Django para tareas como fusionar clientes duplicados.",
+          summary: "Un sistema web que reemplaza una hoja de Excel para llevar facturas, abonos parciales y cobros.",
+          problem: "Las facturas y los pagos se llevaban a mano en una hoja de cálculo, así que era difícil saber qué estaba vencido y cuánto se debía.",
+          solution: "Una app en Django donde el estado de cada factura se calcula a partir de sus pagos y su fecha de cobro, con panel de cobros, estados de cuenta por cliente, importación y exportación a Excel e importación desde FactureroMovil.",
+          result: "En contenedores con Docker y PostgreSQL, desplegada en un VPS mediante un pipeline de CI que ejecuta las pruebas antes de cada versión.",
+          category: "Aplicación Web"
+        },
+        {
+          id: 4,
           name: "FlowPlan — Sistema de Planificación Inteligente",
           description: "Una plataforma full-stack de productividad personal diseñada para ayudar a los usuarios a organizar su tiempo mediante la gestión inteligente de tareas, metas y eventos del calendario. FlowPlan combina un calendario tradicional con un motor de planificación capaz de identificar bloques de tiempo disponibles y generar recomendaciones de actividades priorizadas basadas en tareas pendientes. El sistema también incluye seguimiento de sesiones de trabajo y un sistema semanal de puntuación de productividad para fomentar hábitos consistentes. El proyecto se desarrolló refactorizando una aplicación MVC existente hacia una arquitectura REST API desacoplada, aplicando principios SOLID y patrones de diseño como Repository y Strategy para mejorar la mantenibilidad, escalabilidad y separación de preocupaciones. El backend fue construido con Node.js y Express, usando el ORM Prisma con PostgreSQL, mientras que el cliente móvil fue desarrollado con React Native y Expo.",
           summary: "Una app móvil de productividad que encuentra tu tiempo libre y te recomienda en qué trabajar a continuación.",
@@ -353,17 +394,18 @@ export const translations = {
           solution: "Un motor de planificación que detecta bloques de tiempo disponibles y sugiere tareas priorizadas, con seguimiento de sesiones y una puntuación semanal de productividad.",
           result: "Refactorizada de una app MVC a una REST API desacoplada con SOLID y los patrones Repository y Strategy, con cliente en React Native.",
           category: "Aplicación Full Stack"
-        },
-        {
-          id: 3,
-          name: "NAV-I",
-          description: "Una plataforma full-stack de monitoreo y diagnóstico automatizado de sitios web diseñada para rastrear la salud, rendimiento y seguridad de aplicaciones web. NAV-I proporciona escaneos programados automatizados, métricas de rendimiento de Lighthouse, seguimiento de certificados SSL y diagnósticos impulsados por IA utilizando la API de Anthropic. La plataforma cuenta con un panel interactivo para gestionar alertas, tareas y eventos históricos en múltiples sitios web. Fue construida con una arquitectura moderna usando React, TypeScript, Express, Prisma y PostgreSQL, con tareas en segundo plano gestionadas mediante Node-Cron. Todo el stack está en contenedores usando Docker Compose para un despliegue sin problemas y entornos aislados, mientras que las migraciones de bases de datos y el modelado de datos se manejan a través de Prisma.",
-          summary: "Una plataforma de monitoreo que escanea sitios web de forma programada y usa IA para diagnosticar su salud, rendimiento y seguridad.",
-          problem: "Detectar caídas de rendimiento, certificados SSL por vencer y errores en varios sitios exige revisiones manuales constantes.",
-          solution: "Escaneos programados con métricas de Lighthouse y seguimiento de SSL, más diagnósticos con IA mediante la API de Anthropic en un panel de alertas.",
-          result: "Una app full-stack en contenedores (React, Express, Prisma, PostgreSQL) con tareas en segundo plano gestionadas por node-cron.",
-          category: "Aplicación Full Stack"
         }
+      ],
+      moreTitle: "Más proyectos",
+      moreSubtitle: "Otras cosas que he construido",
+      viewCode: "Ver código",
+      more: [
+        { name: "NAV-I", summary: "Plataforma de monitoreo de sitios web con escaneos programados, métricas de Lighthouse, seguimiento de SSL y diagnósticos con IA mediante la API de Anthropic.", category: "Full Stack" },
+        { name: "Ordo Crescendi", summary: "App de desarrollo personal gamificada: misiones diarias que suman EXP por ruta, una ruleta de castigos y misiones generadas por IA en formato JSON.", category: "Móvil" },
+        { name: "Equipment Maintenance Assistant", summary: "App multiplataforma en .NET MAUI para gestionar clientes, órdenes de trabajo, proformas, facturas, pagos y gastos de un negocio de mantenimiento.", category: "Multiplataforma" },
+        { name: "MediClinic", summary: "Sistema de gestión de clínica para pacientes, citas y reportes, construido por capas y revisado con análisis estático (Pylint, Flake8, Bandit, SonarQube).", category: "Backend" },
+        { name: "Chatbot con IA", summary: "Chatbot en ASP.NET MVC que alterna entre Google Gemini y OpenAI GPT usando los patrones Factory y Repository.", category: "IA" },
+        { name: "TaxiCoop Dispatch", summary: "Dashboard de despacho para una cooperativa de taxis con KPIs y gestión de conductores y viajes (prototipo frontend).", category: "Frontend" }
       ]
     },
     education: {
